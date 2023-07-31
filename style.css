@@ -224,7 +224,7 @@ ul li p{
 
 
 /* responisve */
-@media screen and (min-width: 478px) and (max-width: 1160px){
+@media screen and (min-width: 400px) and (max-width: 1160px){
   .nav-link{
     margin: 0px;
   }
