@@ -12,6 +12,11 @@ body {
   scroll-behavior: smooth;
 }
 
+ul.text-white.small {
+  padding-left: 1rem;
+  line-height: 1.5;
+}
+
 .bg-darker {
   background-color: #020617;
 }
@@ -135,6 +140,8 @@ body {
   box-shadow: none;
   border: 1px solid var(--accent);
   color: #fff;
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
 }
 
 /* Animations */
@@ -260,13 +267,35 @@ body {
   }
 
   .display-3 {
-    font-size: 2.5rem !important;
-    line-height: 1.2;
+    font-size: 2.2rem !important; 
+    letter-spacing: -1px;
+    line-height: 1.1;
   }
 
   .lead {
-    font-size: 1.1rem;
-    padding: 0 10px;
+    font-size: 1rem;
+    line-height: 1.6; 
+    color: var(--text-muted);
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    text-align: center; 
+  }
+
+  .section-title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--accent);
+    margin: 10px auto 0;
+  }
+
+  /* Perbaikan Spasi antar Project Card */
+  .project-card {
+    margin-bottom: 30px;
   }
 
   .content-column .d-flex {
