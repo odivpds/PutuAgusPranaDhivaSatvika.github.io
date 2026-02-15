@@ -157,11 +157,70 @@ body {
   background-color: #d97706;
 }
 
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px; 
+  right: 20px;  
+  background-color: #25d366; 
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  animation: pulse-wa 2s infinite;
+}
 
-/* ==========================================================================
-   RESPONSIVE DESIGN (ALL MOBILE RATIOS)
-   ========================================================================== */
+.whatsapp-float:hover {
+  background-color: #20ba5a;
+  color: #fff;
+  transform: scale(1.1);
+}
 
+/* Tooltip kecil saat kursor di atas tombol */
+.whatsapp-float .tooltip-text {
+  visibility: hidden;
+  width: 100px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  right: 125%; 
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.whatsapp-float:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Animasi Getar */
+@keyframes pulse-wa {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Penyesuaian agar tidak menabrak tombol Back to Top */
+#backToTop {
+  bottom: 95px !important; /* Geser tombol back to top ke atas sedikit */
+}
+
+
+/* RESPONSIVE DESIGN (ALL MOBILE RATIOS)
 /* Tablet & Mobile (Layar di bawah 992px) */
 @media (max-width: 991.98px) {
   :root {
@@ -174,7 +233,7 @@ body {
 
   /* Navbar Adjustment */
   .navbar {
-    background: rgba(15, 23, 42, 0.98); /* Solid di mobile agar menu jelas */
+    background: rgba(15, 23, 42, 0.98); 
     backdrop-filter: blur(10px);
     padding: 10px 0;
   }
@@ -188,7 +247,6 @@ body {
     text-align: center;
   }
 
-  /* Munculkan foto profil versi mobile (Opsional jika ingin ada foto) */
   .hero-section .content-column::before {
     content: "";
     display: block;
@@ -202,7 +260,7 @@ body {
   }
 
   .display-3 {
-    font-size: 2.5rem !important; /* Ukuran font judul yang pas di HP */
+    font-size: 2.5rem !important;
     line-height: 1.2;
   }
 
@@ -212,8 +270,8 @@ body {
   }
 
   .content-column .d-flex {
-    justify-content: center; /* Tombol jadi tengah */
-    flex-direction: column; /* Tombol tumpuk di layar sangat kecil */
+    justify-content: center; 
+    flex-direction: column; 
     gap: 15px !important;
   }
 
@@ -236,6 +294,17 @@ body {
   .contact-box .text-white {
     margin-bottom: 15px;
   }
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 25px;
+  }
+  #backToTop {
+    bottom: 80px !important;
+  }
 }
 
 /* SmartPhone Kecil (iPhone SE, Galaxy S9 - max 576px) */
@@ -249,7 +318,7 @@ body {
   }
 
   .row-cols-2 > .col {
-    width: 50%; /* Tech stack tetap 2 baris */
+    width: 50%; 
   }
 
   .navbar-brand {
@@ -261,14 +330,12 @@ body {
 @media (min-height: 800px) and (max-width: 991px) {
   .hero-section {
     display: flex;
-    align-items: center; /* Teks tetap di tengah layar meskipun HP panjang */
+    align-items: center; 
   }
 }
 
-/* ==========================================================================
-   FIX FORM & COMPONENT UPDATES
-   ========================================================================== */
-
+/*FIX FORM & COMPONENT UPDATES
+  
 /* Perbaikan warna input agar teks yang diketik terlihat */
 .form-control {
   background: rgba(255, 255, 255, 0.05) !important;
@@ -287,12 +354,11 @@ body {
   box-shadow: 0 0 0 0.25 darkredrem rgba(245, 158, 11, 0.25) !important;
 }
 
-/* Memperbaiki list item agar tidak berantakan di mobile */
 ul.text-white {
   padding-left: 1.2rem;
   text-align: left;
 }
 
 .experience-card {
-  text-align: left; /* Pengalaman tetap rata kiri agar profesional */
+  text-align: left; 
 }

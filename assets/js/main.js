@@ -47,16 +47,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      if (!contactForm.checkValidity()) {
-        e.preventDefault();
-        e.stopPropagation();
-        contactForm.classList.add('was-validated');
-        return;
-      }
       e.preventDefault();
-      const name = contactForm.querySelector('[name="nama"]').value || 'Pengguna';
-      alert('Terima kasih, ' + name + '. Pesan Anda telah diterima (demo).');
-      contactForm.reset();
+      
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+      submitBtn.disabled = true;
+
+      fetch("https://formsubmit.co/ajax/agusprana31@gmail.com", {
+        method: "POST",
+        body: new FormData(contactForm)
+      })
+      .then(res => res.ok ? alert("Pesan terkirim!") : alert("Gagal mengirim."))
+      .then(() => {
+        contactForm.reset();
+        submitBtn.innerHTML = "Kirim Sekarang";
+        submitBtn.disabled = false;
+      })
+      .catch(() => alert("Terjadi kesalahan jaringan."));
     });
   }
 
