@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agus Prana — Software Developer Portfolio</title>
+  <link rel="icon" href="assets/AgusPrana.jpg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
 </head>
 <body>
 
@@ -119,43 +121,97 @@
 
   <section id="projects" class="section-padding bg-darker">
     <div class="container">
-      <h2 class="section-title text-center mb-5">Selected Projects</h2>
-      <div class="row g-4">
-        <!-- Project 1 -->
-        <div class="col-md-6 reveal">
-          <div class="project-card">
-            <div class="project-img">
-              <img src="assets/project-sim.png" class="img-fluid" alt="SIM Project">
-            </div>
-            <div class="project-info p-4">
-              <h5 class="text-white">Sistem Monitoring Indikator Kinerja</h5>
-              <p class="text-white small">Sistem manajemen data indikator kinerja dan mahasiswa menggunakan Laravel, JavaScript & MySQL.</p>
-              <div class="tags mb-3">
-                <span class="badge bg-secondary">Laravel</span>
-                <span class="badge bg-secondary">JavaScript</span>
-                <span class="badge bg-secondary">MySQL</span>
+      <div class="d-flex justify-content-between align-items-end mb-5 reveal">
+        <div>
+          <h2 class="section-title mb-0 text-warning">My Projects</h2>
+        </div>
+        <div class="slider-controls d-none d-md-flex gap-2">
+          <button class="btn-slider" id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <button class="btn-slider" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+
+      <div class="project-slider-container reveal">
+        <div class="project-slider-track" id="projectTrack">
+          
+          <!-- Project 1 -->
+          <div class="project-slide">
+            <div class="project-card">
+              <div class="project-img">
+                <img src="assets/project-sim.png" class="img-fluid" alt="SIM Project">
               </div>
-              <a href="#" class="text-warning text-decoration-none fw-bold">View Detail <i class="fas fa-arrow-right ms-2"></i></a>
+              <div class="project-info p-4">
+                <h5 class="text-white">Sistem Monitoring Indikator Kinerja</h5>
+                <p class="text-white small">Sistem manajemen data indikator kinerja dan mahasiswa menggunakan Laravel, JavaScript & MySQL.</p>
+                <div class="tags mb-3">
+                  <span class="badge bg-secondary">Laravel</span>
+                  <span class="badge bg-secondary">JavaScript</span>
+                  <span class="badge bg-secondary">MySQL</span>
+                </div>
+                <a href="#" class="text-warning text-decoration-none fw-bold">View Detail <i class="fas fa-arrow-right ms-2"></i></a>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="col-md-6 reveal">
-          <div class="project-card">
-            <div class="project-img">
-              <img src="assets/project-game.png" class="img-fluid" alt="Game Mod">
-            </div>
-            <div class="project-info p-4">
-              <h5 class="text-white">Minecraft Custom Mechanics</h5>
-              <p class="text-white small">Pengembangan mekanik permainan menggunakan integrasi JavaScript dan JSON API.</p>
-              <div class="tags mb-3">
-                <span class="badge bg-secondary">JavaScript</span>
-                <span class="badge bg-secondary">JSON</span>
+
+          <!-- Project 2 -->
+          <div class="project-slide">
+            <div class="project-card">
+              <div class="project-img">
+                <img src="assets/project-game.png" class="img-fluid" alt="Game Mod">
               </div>
-              <a href="#" class="text-warning text-decoration-none fw-bold">View Detail <i class="fas fa-arrow-right ms-2"></i></a>
+              <div class="project-info p-4">
+                <h5 class="text-white">Minecraft Custom Mechanics</h5>
+                <p class="text-white small">Pengembangan mekanik permainan menggunakan integrasi JavaScript dan JSON API.</p>
+                <div class="tags mb-3">
+                  <span class="badge bg-secondary">JavaScript</span>
+                  <span class="badge bg-secondary">JSON</span>
+                </div>
+                <!-- <a href="#" class="text-warning text-decoration-none fw-bold">View Detail <i class="fas fa-arrow-right ms-2"></i></a> -->
+              </div>
             </div>
           </div>
+          <!-- Project 3 -->
+          <div class="project-slide">
+            <div class="project-card">
+              <div class="project-img">
+                <img src="assets/divtravel.png" class="img-fluid" alt="Web Dev">
+              </div>
+              <div class="project-info p-4">
+                <h5 class="text-white">Website Travel | DIVTRAVEL</h5>
+                <p class="text-white small">Website travel yang menyediakan layanan booking paket wisata.</p>
+                <div class="tags mb-3">
+                  <span class="badge bg-secondary">NodeJS</span>
+                  <span class="badge bg-secondary">JavaScript</span>
+                </div>
+                <a href="https://odivpds.github.io/WebTravel-DivTravel/" class="text-warning text-decoration-none fw-bold">View Detail <i class="fas fa-arrow-right ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Project 5 (Contoh Tambahan) -->
+          <div class="project-slide">
+            <div class="project-card">
+              <div class="project-img">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600" class="img-fluid" alt="Web Dev">
+              </div>
+              <div class="project-info p-4">
+                <h5 class="text-white">E-Commerce API Service</h5>
+                <p class="text-white small">Membangun backend service yang scalable menggunakan NodeJS dan Express.</p>
+                <div class="tags mb-3">
+                  <span class="badge bg-secondary">NodeJS</span>
+                  <span class="badge bg-secondary">MongoDB</span>
+                </div>
+                <a href="#" class="text-warning text-decoration-none fw-bold">View Detail <i class="fas fa-arrow-right ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </div>
+
+      <!-- Navigasi Mobile -->
+      <div class="d-flex d-md-none justify-content-center gap-3 mt-4">
+          <button class="btn-slider" id="prevBtnMob"><i class="fas fa-chevron-left"></i></button>
+          <button class="btn-slider" id="nextBtnMob"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
   </section>
@@ -207,70 +263,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Scroll Reveal Animation
-    window.addEventListener('scroll', reveal);
-    function reveal() {
-      var reveals = document.querySelectorAll('.reveal');
-      for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 150;
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add('visible');
-        }
-      }
-    }
-    // Navbar change color on scroll
-    window.onscroll = function() {
-      const nav = document.querySelector('.navbar');
-      if (window.scrollY > 50) nav.classList.add('nav-scrolled');
-      else nav.classList.remove('nav-scrolled');
-    };
-
-
-
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // Mencegah reload halaman
-
-      // Ubah teks tombol saat loading
-      const originalBtnText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-      submitBtn.disabled = true;
-
-      // Ambil data form
-      const formData = new FormData(contactForm);
-
-      // Kirim data menggunakan Fetch API
-      fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          alert('Terima kasih! Pesan Anda telah berhasil terkirim.');
-          contactForm.reset(); // Kosongkan form
-        } else {
-          alert('Oops! Terjadi kesalahan, silakan coba lagi nanti.');
-        }
-      })
-      .catch(error => {
-        alert('Terjadi kesalahan koneksi.');
-      })
-      .finally(() => {
-        // Kembalikan tombol ke status awal
-        submitBtn.innerHTML = originalBtnText;
-        submitBtn.disabled = false;
-      });
-    });
-  </script>
-
   <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." 
     class="whatsapp-float"  
     target="_blank" 
