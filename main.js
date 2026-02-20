@@ -4,7 +4,35 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-  
+
+  // === 0. DARK MODE / LIGHT MODE TOGGLE ===
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlElement = document.documentElement;
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+
+  // Set initial theme
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    document.body.classList.remove('light-mode');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+
+  // Toggle theme on button click
+  themeToggle.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.body.classList.toggle('light-mode');
+    
+    if (document.body.classList.contains('light-mode')) {
+      localStorage.setItem('theme', 'light');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      localStorage.setItem('theme', 'dark');
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+  });
+
   // === 1. NAVBAR & SCROLL BEHAVIOR ===
   const navbar = document.querySelector('.navbar');
   const offset = navbar?.offsetHeight || 72;
