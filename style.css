@@ -7,6 +7,7 @@
   --text-primary: #fff;
 }
 
+/* start-light-mode */
 /* Light Mode */
 body.light-mode {
   --primary: #f8f9fa;   /* Light Gray */
@@ -30,14 +31,18 @@ body.light-mode .bg-darker {
 }
 
 body.light-mode .experience-card,
-body.light-mode .project-card {
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  background-color: #ffffff !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+body.light-mode .project-card-clean {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-body.light-mode .project-card:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+body.light-mode .pc-title {
+  color: #1e293b !important;
+}
+
+body.light-mode .pc-description {
+  color: #64748b !important;
 }
 
 body.light-mode .form-control {
@@ -188,6 +193,76 @@ body.light-mode .opacity-75 {
   opacity: 0.9 !important;
 }
 
+body.light-mode .pricing-card {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Hover kartu paket */
+body.light-mode .pricing-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Kartu Paket Terpopuler (Medium) */
+body.light-mode .pricing-card.featured {
+  background-color: #ffffff !important;
+  border: 2px solid var(--accent) !important; /* Border emas agar menonjol */
+  box-shadow: 0 10px 40px rgba(217, 119, 6, 0.15) !important;
+}
+
+/* Label "TERPOPULER" pada kartu */
+body.light-mode .featured-badge {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+/* Teks dan Detail Harga */
+body.light-mode .price .amount {
+  color: var(--text-primary) !important;
+}
+
+body.light-mode .price .currency {
+  color: var(--accent) !important;
+}
+
+body.light-mode .price .duration,
+body.light-mode .pricing-header p {
+  color: var(--text-muted) !important;
+}
+
+/* List Fitur dalam Paket */
+body.light-mode .pricing-features li {
+  color: var(--text-primary) !important;
+}
+
+body.light-mode .pricing-features li i.fa-check {
+  color: #059669 !important;
+}
+
+body.light-mode .pricing-features li i.fa-times {
+  color: #dc2626 !important; 
+}
+
+/* Tombol Outline di dalam kartu harga */
+body.light-mode .pricing-card .btn-outline-warning {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+body.light-mode .pricing-card .btn-outline-warning:hover {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+/* Penyesuaian teks deskripsi bisnis di bawah judul */
+body.light-mode #business p.text-white-50 {
+  color: var(--text-muted) !important;
+}
+/* end-light-mode */
+
+
 body {
   background-color: var(--primary);
   font-family: 'Inter', sans-serif;
@@ -272,19 +347,17 @@ ul.text-white.small {
   object-position: center;
 }
 
-/* Overlay Gradasi agar tidak terlihat mengotak */
 .image-gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 101%; /* Sedikit lebih lebar untuk menutup celah */
+  width: 101%; 
   height: 100%;
   z-index: 2;
-  /* Gradasi dari warna background (Slate 900) ke transparan */
   background: linear-gradient(
     to right, 
-    #0f172a 0%,    /* Full gelap sesuai bg body */
-    #0f172a 10%,   /* Mulai transisi */
+    #0f172a 0%,   
+    #0f172a 10%,  
     transparent 100%
   );
 }
@@ -303,26 +376,58 @@ ul.text-white.small {
   border: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Project Card */
-.project-card {
+.project-card-clean {
   background: var(--secondary);
-  border-radius: 16px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.project-card-clean:hover {
+  transform: translateY(-10px);
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); */
+  /* border-color: var(--accent); */
+}
+
+.pc-image-box {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.pc-image-box img {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
 }
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+
+.project-card-clean:hover .pc-image-box img {
+  transform: scale(1.1);
 }
-.project-img {
-  height: 220px;
-  background: #334155;
-  overflow: hidden;
+
+.pc-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
 }
-.project-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  opacity: 0.8;
+
+.pc-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pc-description {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 /* Forms */
@@ -411,6 +516,69 @@ ul.text-white.small {
   opacity: 1;
 }
 
+/* Pricing/Business Styles */
+.pricing-card {
+  background: var(--secondary);
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-15px);
+  background: #2b3a52; 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.pricing-card.featured {
+  background: #0f172a;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 20px;
+  right: -35px;
+  background: var(--accent);
+  color: #000;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 5px 40px;
+  transform: rotate(45deg);
+}
+
+.pricing-features li {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.price .amount {
+  letter-spacing: -1px;
+}
+
+/* Memastikan transisi antar section smooth */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (max-width: 992px) {
+   .pricing-card.featured {
+    transform: scale(1.05);
+    z-index: 2;
+  }
+  
+  .pricing-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--bs-warning);
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .pricing-card.featured:hover {
+    transform: scale(1.08) translateY(-10px);
+  }
+}
+
 /* Animasi Getar */
 @keyframes pulse-wa {
   0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
@@ -420,7 +588,7 @@ ul.text-white.small {
 
 /* Penyesuaian agar tidak menabrak tombol Back to Top */
 #backToTop {
-  bottom: 95px !important; /* Geser tombol back to top ke atas sedikit */
+  bottom: 95px !important; 
 }
 
 
@@ -498,7 +666,6 @@ ul.text-white.small {
     margin: 10px auto 0;
   }
 
-  /* Perbaikan Spasi antar Project Card */
   .project-card {
     margin-bottom: 30px;
   }
@@ -509,7 +676,6 @@ ul.text-white.small {
     gap: 15px !important;
   }
 
-  /* Sembunyikan gambar full page agar tidak nabrak teks */
   .hero-image-full {
     display: none;
   }
@@ -539,6 +705,21 @@ ul.text-white.small {
   #backToTop {
     bottom: 80px !important;
   }
+
+  .pricing-card.featured {
+    transform: scale(1); 
+    margin: 10px 0;
+  }
+  
+  .pricing-card {
+    max-width: 450px;
+    margin: 0 auto; 
+  }
+
+  .display-5 {
+    font-size: 2.2rem;
+  }
+
 }
 
 /* SmartPhone Kecil (iPhone SE, Galaxy S9 - max 576px) */
@@ -558,6 +739,27 @@ ul.text-white.small {
   .navbar-brand {
     font-size: 1.1rem;
   }
+
+  #business .display-5 {
+    font-size: 1.8rem !important; 
+  }
+
+  .pricing-card {
+    padding: 1.5rem !important;
+  }
+
+  .pricing-card .amount {
+    font-size: 1.75rem !important; 
+  }
+
+  .pricing-header h4 {
+    font-size: 1.25rem; 
+  }
+
+  .pricing-features li {
+    font-size: 0.85rem;
+  }
+
 }
 
 /* Layar Panjang (Modern Aspect Ratio 19:9 - 21:9) */
@@ -567,10 +769,7 @@ ul.text-white.small {
     align-items: center; 
   }
 }
-
-/*FIX FORM & COMPONENT UPDATES
   
-/* Perbaikan warna input agar teks yang diketik terlihat */
 .form-control {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -597,65 +796,8 @@ ul.text-white {
   text-align: left; 
 }
 
-/* carousel */
-/* Project Carousel Styling */
-.project-slider-container {
-  overflow: hidden; /* Sembunyikan project yang di luar layar */
-  position: relative;
-  padding: 10px 0 30px;
+.section-padding {
+    padding: 80px 0;
 }
 
-.project-slider-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Transisi halus */
-  gap: 20px;
-}
 
-.project-slide {
-  flex: 0 0 calc(50% - 10px); /* Desktop: 2 project (dikurangi gap) */
-  min-width: 0;
-}
-
-/* Tombol Navigasi */
-.btn-slider {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: var(--secondary);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-slider:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  transform: scale(1.1);
-}
-
-/* Responsive Slider */
-@media (max-width: 991.98px) {
-  .project-slide {
-    flex: 0 0 100%; /* Mobile & Tablet: 1 project full */
-  }
-}
-
-/* Perbaikan visual kartu di dalam slider */
-.project-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0; /* Override margin lama */
-}
-
-.project-info {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-/* carousel */
