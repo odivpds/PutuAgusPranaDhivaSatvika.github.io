@@ -1,18 +1,15 @@
 :root {
-  /* Dark Mode (Default) */
-  --primary: #0f172a;   /* Slate 900 */
-  --secondary: #1e293b; /* Slate 800 */
-  --accent: #f59e0b;    /* Amber 500 */
+  --primary: #0f172a;  
+  --secondary: #1e293b; 
+  --accent: #f59e0b;   
   --text-muted: #94a3b8;
   --text-primary: #fff;
 }
 
-/* start-light-mode */
-/* Light Mode */
 body.light-mode {
-  --primary: #f8f9fa;   /* Light Gray */
-  --secondary: #e9ecef; /* Light Gray */
-  --accent: #d97706;    /* Amber 600 (darker for light BG) */
+  --primary: #f8f9fa;   
+  --secondary: #e9ecef; 
+  --accent: #d97706;    
   --text-muted: #6c757d;
   --text-primary: #0f172a;
 }
@@ -199,26 +196,22 @@ body.light-mode .pricing-card {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Hover kartu paket */
 body.light-mode .pricing-card:hover {
   transform: translateY(-15px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Kartu Paket Terpopuler (Medium) */
 body.light-mode .pricing-card.featured {
   background-color: #ffffff !important;
-  border: 2px solid var(--accent) !important; /* Border emas agar menonjol */
+  border: 2px solid var(--accent) !important; 
   box-shadow: 0 10px 40px rgba(217, 119, 6, 0.15) !important;
 }
 
-/* Label "TERPOPULER" pada kartu */
 body.light-mode .featured-badge {
   background-color: var(--accent) !important;
   color: #ffffff !important;
 }
 
-/* Teks dan Detail Harga */
 body.light-mode .price .amount {
   color: var(--text-primary) !important;
 }
@@ -245,7 +238,6 @@ body.light-mode .pricing-features li i.fa-times {
   color: #dc2626 !important; 
 }
 
-/* Tombol Outline di dalam kartu harga */
 body.light-mode .pricing-card .btn-outline-warning {
   color: var(--accent) !important;
   border-color: var(--accent) !important;
@@ -256,9 +248,12 @@ body.light-mode .pricing-card .btn-outline-warning:hover {
   color: #ffffff !important;
 }
 
-/* Penyesuaian teks deskripsi bisnis di bawah judul */
 body.light-mode #business p.text-white-50 {
   color: var(--text-muted) !important;
+}
+
+body.light-mode .eks{
+  color: var(--text-primary) !important;
 }
 /* end-light-mode */
 
@@ -320,7 +315,7 @@ ul.text-white.small {
 .hero-section {
   height: 100vh;
   position: relative;
-  overflow: hidden; /* Mencegah gambar keluar dari section */
+  overflow: hidden; 
   display: flex;
   align-items: center;
   background-color: var(--primary);
@@ -328,14 +323,14 @@ ul.text-white.small {
 
 .content-column {
   position: relative;
-  z-index: 10; /* Agar teks berada di depan gambar */
+  z-index: 10; 
 }
 
 .hero-image-full {
   position: absolute;
   top: 0;
   right: 0;
-  width: 50%; /* Mengambil setengah layar kanan */
+  width: 50%; 
   height: 100%;
   z-index: 1;
 }
@@ -343,7 +338,7 @@ ul.text-white.small {
 .hero-image-full img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Gambar tetap proporsional memenuhi area */
+  object-fit: cover; 
   object-position: center;
 }
 
@@ -361,6 +356,73 @@ ul.text-white.small {
     transparent 100%
   );
 }
+
+/* marquee */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.marquee-wrapper {
+  width: 100%; 
+  margin: 0 auto; /* Tengah-tengah */
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+/* Track yang berisi item */
+.marquee-track {
+  display: flex;
+  width: max-content; 
+  animation: scroll 30s linear infinite;
+}
+
+.marquee-item {
+  width: calc(35vw * 0.2); 
+  flex-shrink: 0;
+  text-align: center;
+  padding: 10px 0;
+  transition: transform 0.3s ease;
+}
+
+.marquee-item:hover {
+  transform: translateY(-5px);
+  opacity: 1 !important;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+@media (max-width: 768px) {
+  .marquee-item {
+    width: 33.33vw; 
+  }
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+}
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bs-darker), transparent);
+}
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bs-darker), transparent);
+}
+/* marquee */
 
 /* Section Title */
 .section-title {
@@ -586,13 +648,11 @@ html {
   100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* Penyesuaian agar tidak menabrak tombol Back to Top */
 #backToTop {
   bottom: 95px !important; 
 }
 
 
-/* RESPONSIVE DESIGN (ALL MOBILE RATIOS)
 /* Tablet & Mobile (Layar di bawah 992px) */
 @media (max-width: 991.98px) {
   :root {
