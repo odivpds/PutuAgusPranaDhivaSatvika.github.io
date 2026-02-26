@@ -80,6 +80,19 @@ body.light-mode footer {
   color: var(--text-primary) !important;
 }
 
+body.light-mode .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.1) !important; 
+}
+
+body.light-mode .navbar-toggler-icon {
+  filter: invert(1); 
+}
+
+/* body.light-mode .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.15rem rgba(217, 119, 6, 0.2) !important; 
+  border-color: var(--accent) !important;
+} */
+
 body.light-mode .btn-slider {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
