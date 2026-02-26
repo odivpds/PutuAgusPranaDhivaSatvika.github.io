@@ -28,18 +28,21 @@ body.light-mode .bg-darker {
 }
 
 body.light-mode .experience-card,
-body.light-mode .project-card-clean {
-  background: #ffffff;
-  border-color: #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+body.light-mode .ps-image-wrapper {
+  background-color: #f1f5f9;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-body.light-mode .pc-title {
+body.light-mode .ps-title {
   color: #1e293b !important;
 }
 
-body.light-mode .pc-description {
-  color: #64748b !important;
+body.light-mode .ps-desc {
+  color: var(--text-muted) !important; /* Menggunakan warna abu-abu gelap dari variabel Anda */
+  opacity: 1; 
+}
+body.light-mode .ps-link-simple {
+  color: #1e293b;
 }
 
 body.light-mode .form-control {
@@ -196,10 +199,10 @@ body.light-mode .pricing-card {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-body.light-mode .pricing-card:hover {
+/* body.light-mode .pricing-card:hover {
   transform: translateY(-15px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
-}
+} */
 
 body.light-mode .pricing-card.featured {
   background-color: #ffffff !important;
@@ -437,60 +440,113 @@ ul.text-white.small {
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.05);
 }
+/* Experience Card */
 
-.project-card-clean {
-  background: var(--secondary);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+/* Project Card */
+.project-showcase {
+  position: relative;
+  transition: all 0.4s ease;
 }
 
-.project-card-clean:hover {
-  transform: translateY(-10px);
-  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); */
-  /* border-color: var(--accent); */
-}
-
-.pc-image-box {
+.ps-image-wrapper {
+  position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 9; 
   overflow: hidden;
-  background: #1e293b;
+  border-radius: 5px;
+  background-color: #1e293b;
 }
 
-.pc-image-box img {
+.ps-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.project-card-clean:hover .pc-image-box img {
-  transform: scale(1.1);
+@media (hover: hover) {
+  .project-showcase:hover .ps-img {
+    transform: scale(1.03);
+  }
+
+  .project-showcase:hover .ps-overlay {
+    opacity: 1;
+  }
+  
+  .ps-link-simple:hover {
+    color: var(--accent);
+    border-bottom-color: transparent;
+  }
 }
 
-.pc-body {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1; 
+/* Interaksi Minimal: Gambar hanya membesar sedikit saat hover */
+/* .project-showcase:hover .ps-img {
+  transform: scale(1.03);
+} */
+
+.ps-overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  opacity: 0;
+  transition: 0.3s ease;
 }
 
-.pc-title {
-  font-size: 1.15rem;
+/* .project-showcase:hover .ps-overlay {
+  opacity: 1;
+} */
+
+.ps-category {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  color: var(--accent);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.7rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.pc-description {
-  font-size: 0.88rem;
-  line-height: 1.5;
-  margin-bottom: 20px;
+/* Tipografi */
+.ps-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
+
+.ps-tech-stack {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.ps-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.ps-link-simple {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  padding-bottom: 2px;
+  /* border-bottom: 2px solid var(--accent); */
+  transition: 0.3s;
+}
+
+.ps-link-simple:hover {
+  color: var(--accent);
+  border-bottom-color: transparent;
+}
+/* Project Card */
 
 /* Forms */
 .form-control {
@@ -587,11 +643,28 @@ ul.text-white.small {
   overflow: hidden;
 }
 
-.pricing-card:hover {
+/* Interaksi Pricing Card hanya untuk Desktop */
+@media (hover: hover) {
+  .pricing-card:hover {
+    transform: translateY(-15px);
+    background: #2b3a52; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .pricing-card.featured:hover {
+    transform: scale(1.08) translateY(-10px);
+  }
+  
+  /* Aturan tambahan untuk Light Mode jika ada hover */
+  body.light-mode .pricing-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+/* .pricing-card:hover {
   transform: translateY(-15px);
   background: #2b3a52; 
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
+} */
 
 .pricing-card.featured {
   background: #0f172a;
@@ -625,19 +698,16 @@ html {
 }
 
 @media (max-width: 992px) {
-   .pricing-card.featured {
-    transform: scale(1.05);
-    z-index: 2;
+  .pricing-card.featured {
+    transform: scale(1); 
+    margin: 20px 0;
+    z-index: 1;
   }
   
-  .pricing-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--bs-warning);
-    background: rgba(255, 255, 255, 0.07);
-  }
-
-  .pricing-card.featured:hover {
-    transform: scale(1.08) translateY(-10px);
+  .pricing-card {
+    max-width: 450px;
+    margin: 0 auto;
+    transform: none !important; 
   }
 }
 
@@ -773,7 +843,16 @@ html {
   
   .pricing-card {
     max-width: 450px;
-    margin: 0 auto; 
+    margin: 10px auto; 
+    
+  }
+
+  .ps-title {
+    font-size: 1.1rem;
+  }
+
+  .ps-tech-stack{
+    font-size: 0.65rem;
   }
 
   .display-5 {
