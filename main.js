@@ -2,10 +2,117 @@
  * Agus Prana Portfolio - Main JavaScript
  * Consolidated & Clean Version
  */
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// Paksa ke atas sebelum render
+window.scrollTo(0, 0);
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Paksa ke atas setelah DOM siap
+  window.scrollTo(0, 0);
 
-  // === 0. THEME TOGGLE (Moon/Sun) ===
+  // === SELEKTOR ELEMEN ===
+  const btnClickSFX = document.getElementById('btnClickSFX');
+  const welcomeOverlay = document.getElementById('welcome-overlay');
+  const startBtn = document.getElementById('start-btn');
+  const mainContent = document.getElementById('main-content');
+  const bgMusic = document.getElementById('bgMusic');
+  const swooshSFX = document.getElementById('swooshSFX');
+  const musicToggle = document.getElementById('musicToggle');
+
+  // Lock scroll di awal
+  document.body.classList.add('locked');
+
+  // === GLOBAL CLICK SFX ===
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('button, .btn, .nav-link, .pc-link, .ps-link-simple');
+    
+    // JANGAN bunyikan klik biasa jika yang diklik adalah tombol START (agar hanya suara swoosh)
+    if (target && target !== startBtn && btnClickSFX) {
+      btnClickSFX.currentTime = 0;
+      btnClickSFX.volume = 0.4;
+      btnClickSFX.play().catch(() => {}); 
+    }
+  });
+
+  // === FUNGSI UPDATE UI MUSIK ===
+  function updateMusicUI(isPlaying) {
+    if (!musicToggle) return;
+    const icon = musicToggle.querySelector('i');
+    const statusText = musicToggle.querySelector('.music-status');
+
+    if (isPlaying) {
+      musicToggle.classList.add('music-playing');
+      if (icon) {
+        // Hapus semua kemungkinan class ikon mute, lalu tambah ikon up
+        icon.classList.remove('fa-volume-mute', 'fa-volume-off', 'fa-volume-xmark');
+        icon.classList.add('fa-volume-up');
+      }
+      if (statusText) statusText.textContent = "ON";
+    } else {
+      musicToggle.classList.remove('music-playing');
+      if (icon) {
+        icon.classList.remove('fa-volume-up');
+        icon.classList.add('fa-volume-mute');
+      }
+      if (statusText) statusText.textContent = "OFF";
+    }
+  }
+
+  // === ENTRANCE LOGIC (START BUTTON) ===
+  if (startBtn) {
+    startBtn.addEventListener('click', function() {
+        // Play Swoosh
+        if(swooshSFX) {
+          swooshSFX.volume = 0.6;
+          swooshSFX.play();
+        }
+
+        setTimeout(() => {
+            if (welcomeOverlay) welcomeOverlay.classList.add('exit');
+            if (mainContent) mainContent.classList.add('reveal-site');
+            document.body.classList.remove('locked');
+
+            // Play & Sync Music
+            if(bgMusic) {
+                bgMusic.volume = 0;
+                bgMusic.play();
+                updateMusicUI(true); // Sinkronkan tombol ke ON
+
+                // Fade In Volume
+                let vol = 0;
+                const fadeIn = setInterval(() => {
+                    if (vol < 0.2) {
+                        vol += 0.02;
+                        bgMusic.volume = vol;
+                    } else {
+                        clearInterval(fadeIn);
+                    }
+                }, 100);
+            }
+        }, 150);
+
+        setTimeout(() => {
+            if (welcomeOverlay) welcomeOverlay.remove();
+        }, 2000);
+    });
+  }
+
+  // === MANUAL MUSIC TOGGLE ===
+  if(musicToggle) {
+    musicToggle.addEventListener('click', function() {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            updateMusicUI(true);
+        } else {
+            bgMusic.pause();
+            updateMusicUI(false);
+        }
+    });
+  }
+
   const themeToggle = document.getElementById('themeToggle');
   const savedTheme = localStorage.getItem('theme') || 'dark';
 
@@ -21,14 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
     themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   });
 
-  // === 1. NAVBAR SCROLL EFFECT ===
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
     else navbar.classList.remove('nav-scrolled');
   });
 
-  // === 2. SMOOTH SCROLL ===
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -44,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // === 3. REVEAL ANIMATION ===
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -56,10 +160,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // === 4. CONTACT FORM (AJAX) ===
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
+      btnClickSFX.play();
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const originalText = btn.innerHTML;
@@ -81,4 +185,5 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
 });

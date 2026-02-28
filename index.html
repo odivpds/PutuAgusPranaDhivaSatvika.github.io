@@ -11,363 +11,395 @@
   <link rel="stylesheet" href="style.css">
   <script src="main.js"></script>
 </head>
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <span class="text-warning">AGUS</span>PRANA
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#business">Business</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://drive.google.com/drive/folders/1Gyw3-Gotec8eDSgS2hvTS1I_m2DBsFZ5?usp=sharing">Portofolio</a></li>
-          <li class="nav-item">
-            <button id="themeToggle" class="btn btn-link nav-link" aria-label="Toggle dark/light mode">
-              <i class="fas fa-moon"></i>
-            </button>
-          </li>
-        </ul>
+<body class="locked">
+  <audio id="btnClickSFX" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="swooshSFX" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/musicbalance.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  
+  <button id="musicToggle" class="music-float" aria-label="Toggle Music">
+    <i class="fas fa-volume-mute"></i>
+    <span class="music-status">OFF</span>
+  </button>
+  <div id="welcome-overlay" class="welcome-overlay">
+      <div class="text-center">
+          <h1 class="logo-text mb-4">AGUS <span class="text-warning">PRANA</span><span class="dot">.</span></h1>
+          <div class="loader-line mb-4"></div>
+          <button id="start-btn" class="btn-entrance">
+              <span>ENTER EXPERIENCE</span>
+          </button>
       </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header id="home" class="hero-section">
-    <div class="container h-100">
-      <div class="row h-100 align-items-center">
-        <div class="col-lg-7 content-column">
-          <h5 class="text-warning fw-bold mb-3">FULL STACK WEB DEVELOPER | IT ENTHUSIAST</h5>
-          <h1 class="display-3 fw-800 text-white mb-4">Membangun Solusi Digital dengan Presisi.</h1>
-          <p class="lead text-white mb-5">Halo, saya Agus Prana. Berfokus pada pengembangan web menggunakan Laravel, ReactJS, dan NodeJS. Berkomitmen untuk menciptakan kode yang bersih dan fungsional.</p>
-          <div class="d-flex gap-3">
-            <a href="#projects" class="btn btn-warning px-4 py-2 fw-bold shadow">Lihat Project</a>
-            <a href="#contact" class="btn btn-outline-light px-4 py-2 fw-bold">Hubungi Saya</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Gambar Full Page di sisi kanan -->
-    <div class="hero-image-full d-none d-lg-block">
-      <div class="image-gradient-overlay"></div>
-      <img src="assets/AgusPrana.jpg" alt="Agus Prana">
-    </div>
-  </header>
-
-  <section class="py-5 bg-darker">
-    <div class="container">
-      <div class="text-center mb-5 reveal">
-        <h6 class="text-warning fw-bold uppercase" style="letter-spacing: 2px; font-size: 0.85rem;">MAIN TECH STACK</h6>
-        <h4 class="text-white fw-bold h5">Teknologi & Bahasa Pemrograman</h4>
-      </div>
-      <div class="marquee-wrapper reveal">
-        <div class="marquee-track opacity-75">
-          <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
-          <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
-          <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
-          <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
-          <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
-          <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
-          <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
-          <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
-          <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
-          <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
-          <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
-          <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
-          <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
-          <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
-          <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
-          <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
-          <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
-          <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
-          <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
-          <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
-          <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
-          <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
-          <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
-          <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About & Experience -->
-  <section id="about" class="section-padding">
-    <div class="container">
-      <div class="row g-5">
-        <div class="col-lg-6 reveal">
-          <h2 class="section-title">Tentang Saya</h2>
-          <p class="text-white mb-4">Saya adalah mantan mahasiswa Teknik Informatika di Institut Bisnis dan Teknologi Indonesia yang kini berprofesi sebagai junior front-end, back-end sampai fullstack developer. Memiliki minat besar dalam arsitektur software dan optimasi database. Berpengalaman dalam mengerjakan proyek sistem informasi akademik dan integrasi sistem pihak ketiga.</p>
-          
-          <h4 class="text-white mb-3">Pendidikan</h4>
-          <div class="education-item mb-4 border-start border-warning ps-3">
-            <h6 class="text-white mb-0">MIPA</h6>
-            <span class="text-warning small">2019 — 2022</span>
-            <p class="text-white small">SMA Negeri 1 Tampaksiring</p>
-          </div>
-          <div class="education-item mb-4 border-start border-warning ps-3">
-            <h6 class="text-white mb-0">S1 Informatika</h6>
-            <span class="text-warning small">2022 — 2026</span>
-            <p class="text-white small">Institut Bisnis dan Teknologi Indonesia</p>
-          </div>
-        </div>
-        
-        <div class="col-lg-6 reveal">
-          <h2 class="section-title">Pengalaman</h2>
-          <div class="experience-card p-4 mb-3">
-            <div class="d-flex justify-content-between">
-              <h5 class="text-white">Game Developer Intern</h5>
-              <span class="text-warning small">2024</span>
-            </div>
-            <p class="text-warning mb-2">Hat and Cat Studio</p>
-            <ul class="text-white small">
-              <li>Membangun mekanik gameplay menggunakan JavaScript dan JSON.</li>
-              <li>Debugging dan optimasi performa script JSON/JS.</li>
-            </ul>
-          </div>
-          <div class="experience-card p-4 mb-3">
-            <div class="d-flex justify-content-between">
-              <h5 class="text-white">Full Stack Web Developer</h5>
-              <span class="text-warning small">2025</span>
-            </div>
-            <p class="text-warning mb-2">Skripsi - Institut Bisnis dan Teknologi Indonesia</p>
-            <ul class="text-white small">
-              <li>Membangun Sistem Informasi Monitoring Indikator Kinerja menggunakan PHP, Laravel, JavaScript dan MySQL.</li>
-              <!-- <li>Integrasi sistem pihak ketiga untuk manajemen data.</li> -->
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- My Business Section -->
-  <section id="business" class="section-padding bg-darker">
-    <div class="container">
-      <div class="text-center mb-5 reveal">
-        <h5 class="text-warning fw-bold uppercase" style="letter-spacing: 2px;">PENAWARAN LAYANAN</h5>
-        <h2 class="display-5 fw-bold text-white">Website Performa Tinggi, Tanpa Kompromi</h2>
-        <p class="text-white-50 mx-auto" style="max-width: 700px;">
-          Kami membangun aset digital Anda dengan <strong>Hand-Crafted Code</strong> (Bukan WordPress/CMS). Menghasilkan website yang jauh lebih ringan, loading super cepat, dan keamanan yang tidak bisa ditembus oleh celah umum CMS.
-        </p>
-      </div>
-
-      <div class="row g-4 justify-content-center">
-        
-        <!-- Paket Starter -->
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column">
-            <div class="pricing-header mb-4">
-              <h4 class="text-white">Starter Plan</h4>
-              <p class="text-white-50 small">Esensial untuk Personal Brand & Portofolio</p>
-              <div class="price mt-3">
-                <span class="currency text-warning">Rp</span>
-                <span class="amount h2 fw-bold text-white">1.299</span>
-                <span class="duration text-white-50">.000</span>
-              </div>
-            </div>
-            <ul class="pricing-features list-unstyled text-white-50 mb-5">
-              <li><i class="fas fa-check text-warning me-2"></i> 1 Halaman (Landing Page)</li>
-              <li><i class="fas fa-check text-warning me-2"></i> Desain Modern & Responsif</li>
-              <li><i class="fas fa-check text-warning me-2"></i> Integrasi WhatsApp Chat</li>
-              <li><i class="fas fa-check text-warning me-2"></i> Setup Google Search Console</li>
-              <li><i class="fas fa-check text-warning me-2"></i> Free Domain .com/.id (1 th)</li>
-            </ul>
-            <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20tertarik%20dengan%20Starter%20Plan." class="btn btn-outline-warning w-100 fw-bold mt-auto">Pilih Starter</a>
-          </div>
-        </div>
-
-        <!-- Paket Business -->
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="pricing-card featured p-4 h-100 border border-warning shadow-lg d-flex flex-column">
-            <div class="featured-badge">BEST VALUE</div>
-            <div class="pricing-header mb-4">
-              <h4 class="text-white">Business Plan</h4>
-              <p class="text-white-50 small">Standar Profesional untuk UMKM & Profil Bisnis</p>
-              <div class="price mt-3">
-                <span class="currency text-warning">Rp</span>
-                <span class="amount h2 fw-bold text-white">1.799</span>
-                <span class="duration text-white-50">.000</span>
-              </div>
-            </div>
-            <p class="text-warning small fw-bold mb-3">Semua fitur Starter ditambah:</p>
-            <ul class="pricing-features list-unstyled text-white mb-5">
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Hingga 5 Halaman Dinamis</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Optimasi SEO On-Page</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Integrasi Email Bisnis (Kustom)</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Keamanan SSL & Anti-Spam</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> 3x Sesi Revisi Eksklusif</li>
-            </ul>
-            <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20tertarik%20dengan%20Business%20Plan." class="btn btn-warning w-100 fw-bold mt-auto">Pilih Business</a>
-          </div>
-        </div>
-
-        <!-- Paket Custom -->
-        <div class="col-lg-4 col-md-6 reveal">
-          <div class="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column">
-            <div class="pricing-header mb-4">
-              <h4 class="text-white">Advanced Custom</h4>
-              <p class="text-white-50 small">Sistem Kustom untuk Kebutuhan Kompleks</p>
-              <div class="price mt-3">
-                <span class="currency text-white-50">Mulai</span>
-                <span class="amount h2 fw-bold text-white text-nowrap">5.500</span>
-                <span class="duration text-white-50">.000</span>
-                <span class="duration text-white-50">sesuai kompleksitas</span>
-              </div>
-            </div>
-            <p class="text-white-50 small fw-bold mb-3">Semua fitur Business ditambah:</p>
-            <ul class="pricing-features list-unstyled text-white-50 mb-5">
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Sistem Kustom (Laravel/React)</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Fitur E-Commerce / Dashboard</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Advanced Database Architecture</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Integrasi API Pihak Ketiga</li>
-              <li><i class="fas fa-plus-circle text-warning me-2"></i> Prioritas Support & Maintenance</li>
-            </ul>
-            <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20tertarik%20dengan%20Advanced%20Custom." class="btn btn-outline-warning w-100 fw-bold mt-auto">Konsultasi Project</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="section-padding">
-  <div class="container">
-    <div class="text-center mb-5 reveal">
-      <h2 class="section-title text-warning">Featured Projects</h2>
-      <p class="text-white-50 eks">Eksplorasi karya pilihan dalam pengembangan perangkat lunak.</p>
-    </div>
-
-    <div class="row g-5"> 
-      <div class="col-lg-6 reveal">
-        <div class="project-showcase">
-          <div class="ps-image-wrapper">
-            <img src="assets/project-sim.png" alt="Sistem Monitoring" class="ps-img">
-            <div class="ps-overlay">
-              <span class="ps-category">Web Application</span>
-            </div>
-          </div>
-          <div class="ps-content mt-4">
-            <div class="d-flex justify-content-between align-items-center">
-              <h4 class="ps-title text-white mb-0">Sistem Monitoring Indikator Kinerja</h4>
-              <span class="ps-tech-stack">Laravel • MySQL</span>
-            </div>
-            <p class="ps-desc text-white-50 mt-3">
-              Membangun platform monitoring real-time untuk efisiensi pelacakan data indikator akademik secara akurat.
-            </p>
-            <a href="#" class="ps-link-simple">Case Study <i class="fas fa-arrow-right ms-2"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 reveal">
-        <div class="project-showcase">
-          <div class="ps-image-wrapper">
-            <img src="assets/skyvoya.png" alt="SkyVoya Travel" class="ps-img">
-            <div class="ps-overlay">
-              <span class="ps-category">Landing Page</span>
-            </div>
-          </div>
-          <div class="ps-content mt-4">
-            <div class="d-flex justify-content-between align-items-center">
-              <h4 class="ps-title text-white mb-0">SkyVoya Travel Agency</h4>
-              <span class="ps-tech-stack">HTML • Tailwind-CSS • JavaScript</span>
-            </div>
-            <p class="ps-desc text-white-50 mt-3">
-              Website modern untuk agen perjalanan dengan sistem booking yang intuitif dan desain yang memikat.
-            </p>
-            <a href="https://odivpds.github.io/SkyVoyaTravel/" class="ps-link-simple">Live Preview <i class="fas fa-external-link-alt ms-2"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6 reveal">
-        <div class="project-showcase">
-          <div class="ps-image-wrapper">
-            <img src="assets/divgym.png" alt="SkyVoya Travel" class="ps-img">
-            <div class="ps-overlay">
-              <span class="ps-category">Landing Page</span>
-            </div>
-          </div>
-          <div class="ps-content mt-4">
-            <div class="d-flex justify-content-between align-items-center">
-              <h4 class="ps-title text-white mb-0">DivGym Fitness Center</h4>
-              <span class="ps-tech-stack">HTML • Tailwind-CSS • JavaScript</span>
-            </div>
-            <p class="ps-desc text-white-50 mt-3">
-              Website modern untuk pusat kebugaran dengan sistem booking yang intuitif dan desain yang memikat.
-            </p>
-            <a href="https://odivpds.github.io/DivGym/" class="ps-link-simple">Live Preview <i class="fas fa-external-link-alt ms-2"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-</section>
+  <div id="main-content">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          <span class="text-warning">AGUS</span>PRANA
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#business">Business</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://drive.google.com/drive/folders/1Gyw3-Gotec8eDSgS2hvTS1I_m2DBsFZ5?usp=sharing">Portofolio</a></li>
+            <li class="nav-item">
+              <button id="themeToggle" class="btn btn-link nav-link" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <!-- Contact -->
-  <section id="contact" class="section-padding bg-darker ">
-    <div class="container">
-      <div class="contact-box p-5 rounded-4 shadow-lg reveal">
-        <div class="row align-items-center">
-          <div class="col-lg-5 mb-4 mb-lg-0">
-            <h2 class="text-white display-6 fw-bold">Mari Berkolaborasi</h2>
-            <p class="text-white">Punya ide proyek atau butuh bantuan dalam pengembangan web? Saya siap membantu.</p>
-            <div class="mt-4">
-              <p class="text-white mb-2"><i class="fas fa-envelope text-warning me-2"></i> agusprana31@gmail.com</p>
-              <p class="text-white mb-2"><i class="fab fa-github text-warning me-2"></i> odivpds</p>
+    <header id="home" class="hero-section">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center">
+          <div class="col-lg-7 content-column">
+            <h5 class="text-warning fw-bold mb-3">FULL STACK WEB DEVELOPER | IT ENTHUSIAST</h5>
+            <h1 class="display-3 fw-800 text-white mb-4">Membangun Solusi Digital dengan Presisi.</h1>
+            <p class="lead text-white mb-5">Halo, saya Agus Prana. Berfokus pada pengembangan web menggunakan Laravel, ReactJS, dan NodeJS. Berkomitmen untuk menciptakan kode yang bersih dan fungsional.</p>
+            <div class="d-flex gap-3">
+              <a href="#projects" class="btn btn-warning px-4 py-2 fw-bold shadow">Lihat Project</a>
+              <a href="#contact" class="btn btn-outline-light px-4 py-2 fw-bold">Hubungi Saya</a>
             </div>
-          </div>
-          <div class="col-lg-7">
-            <form id="contactForm" action="https://formsubmit.co/agusprana31@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio!">
-              <input type="hidden" name="_template" value="table"> 
-              <input type="hidden" name="_captcha" value="false"> 
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <input type="text" name="Full Name" class="form-control" placeholder="Nama Anda" required>
-                </div>
-                <div class="col-md-6">
-                  <input type="email" name="Email Address" class="form-control" placeholder="Email Anda" required>
-                </div>
-                <div class="col-12">
-                  <textarea name="Message" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
-                </div>
-                <div class="col-12">
-                  <button type="submit" id="submitBtn" class="btn btn-warning w-100 fw-bold py-3">
-                    Kirim Sekarang
-                  </button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+      
+      <div class="hero-image-full d-none d-lg-block">
+        <div class="image-gradient-overlay"></div>
+        <img src="assets/AgusPrana.jpg" alt="Agus Prana">
+      </div>
+    </header>
 
-  <footer class="py-4 text-center border-top border-secondary">
-    <p class="text-white small mb-0">© 2022 Putu Agus Prana Dhiva Satvika. All Rights Reserved.</p>
-  </footer>
+    <section class="py-5 bg-darker">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <h6 class="text-warning fw-bold uppercase" style="letter-spacing: 2px; font-size: 0.85rem;">MAIN TECH STACK</h6>
+          <h4 class="text-white fw-bold h5">Teknologi & Bahasa Pemrograman</h4>
+        </div>
+        <div class="marquee-wrapper reveal">
+          <div class="marquee-track opacity-75">
+            <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
+            <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
+            <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
+            <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
+            <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
+            <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
+            <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
+            <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
+            <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
+            <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
+            <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
+            <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
+            <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
+            <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
+            <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
+            <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
+            <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
+            <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
+            <div class="marquee-item"><i class="fab fa-laravel fa-2x mb-2 text-white"></i><p class="small text-white">Laravel</p></div>
+            <div class="marquee-item"><i class="fab fa-react fa-2x mb-2 text-white"></i><p class="small text-white">ReactJS</p></div>
+            <div class="marquee-item"><i class="fab fa-node-js fa-2x mb-2 text-white"></i><p class="small text-white">NodeJS</p></div>
+            <div class="marquee-item"><i class="fab fa-js fa-2x mb-2 text-white"></i><p class="small text-white">JavaScript</p></div>
+            <div class="marquee-item"><i class="fab fa-php fa-2x mb-2 text-white"></i><p class="small text-white">PHP</p></div>
+            <div class="marquee-item"><i class="fa-solid fa-database fa-2x mb-2 text-white"></i><p class="small text-white">MySQL</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." 
-    class="whatsapp-float"  
-    target="_blank" 
-    rel="noopener noreferrer"
-    aria-label="Hubungi saya di WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="tooltip-text">Chat Saya</span>
-  </a>
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6 reveal">
+            <h2 class="section-title">Tentang Saya</h2>
+            <p class="text-white mb-4">Saya adalah mantan mahasiswa Teknik Informatika di Institut Bisnis dan Teknologi Indonesia yang kini berprofesi sebagai junior front-end, back-end sampai fullstack developer. Memiliki minat besar dalam arsitektur software dan optimasi database. Berpengalaman dalam mengerjakan proyek sistem informasi akademik dan integrasi sistem pihak ketiga.</p>
+            
+            <h4 class="text-white mb-3">Pendidikan</h4>
+            <div class="education-item mb-4 border-start border-warning ps-3">
+              <h6 class="text-white mb-0">MIPA</h6>
+              <span class="text-warning small">2019 — 2022</span>
+              <p class="text-white small">SMA Negeri 1 Tampaksiring</p>
+            </div>
+            <div class="education-item mb-4 border-start border-warning ps-3">
+              <h6 class="text-white mb-0">S1 Informatika</h6>
+              <span class="text-warning small">2022 — 2026</span>
+              <p class="text-white small">Institut Bisnis dan Teknologi Indonesia</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-6 reveal">
+            <h2 class="section-title">Pengalaman</h2>
+            <div class="experience-card p-4 mb-3">
+              <div class="d-flex justify-content-between">
+                <h5 class="text-white">Game Developer Intern</h5>
+                <span class="text-warning small">2024</span>
+              </div>
+              <p class="text-warning mb-2">Hat and Cat Studio</p>
+              <ul class="text-white small">
+                <li>Membangun mekanik gameplay menggunakan JavaScript dan JSON.</li>
+                <li>Debugging dan optimasi performa script JSON/JS.</li>
+              </ul>
+            </div>
+            <div class="experience-card p-4 mb-3">
+              <div class="d-flex justify-content-between">
+                <h5 class="text-white">Full Stack Web Developer</h5>
+                <span class="text-warning small">2025</span>
+              </div>
+              <p class="text-warning mb-2">Skripsi - Institut Bisnis dan Teknologi Indonesia</p>
+              <ul class="text-white small">
+                <li>Membangun Sistem Informasi Monitoring Indikator Kinerja menggunakan PHP, Laravel, JavaScript dan MySQL.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="business" class="section-padding bg-darker">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <h5 class="text-warning fw-bold uppercase" style="letter-spacing: 2px;">PENAWARAN LAYANAN</h5>
+          <h2 class="display-5 fw-bold text-white">Website Performa Tinggi, Tanpa Kompromi</h2>
+          <p class="text-white-50 mx-auto" style="max-width: 700px;">
+            Kami membangun aset digital Anda dengan <strong>Hand-Crafted Code</strong> (Bukan WordPress/CMS). Menghasilkan website yang jauh lebih ringan, loading super cepat, dan keamanan yang tidak bisa ditembus oleh celah umum CMS.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          
+          <div class="col-lg-4 col-md-6 reveal">
+            <div class="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column">
+              <div class="pricing-header mb-4">
+                <h4 class="text-white">Starter Plan</h4>
+                <p class="text-white-50 small">Esensial untuk Personal Brand & Portofolio</p>
+                <div class="price mt-3">
+                  <span class="currency text-warning">Rp</span>
+                  <span class="amount h2 fw-bold text-white">1.299</span>
+                  <span class="duration text-white-50">.000</span>
+                </div>
+              </div>
+              <ul class="pricing-features list-unstyled text-white-50 mb-5">
+                <li><i class="fas fa-check text-warning me-2"></i> 1 Halaman (Landing Page)</li>
+                <li><i class="fas fa-check text-warning me-2"></i> Desain Modern & Responsif</li>
+                <li><i class="fas fa-check text-warning me-2"></i> Integrasi WhatsApp Chat</li>
+                <li><i class="fas fa-check text-warning me-2"></i> Setup Google Search Console</li>
+                <li><i class="fas fa-check text-warning me-2"></i> Free Domain .com/.id (1 th)</li>
+              </ul>
+              <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20tertarik%20dengan%20Starter%20Plan." class="btn btn-outline-warning w-100 fw-bold mt-auto">Pilih Starter</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 reveal">
+            <div class="pricing-card featured p-4 h-100 border border-warning shadow-lg d-flex flex-column">
+              <div class="featured-badge">BEST VALUE</div>
+              <div class="pricing-header mb-4">
+                <h4 class="text-white">Business Plan</h4>
+                <p class="text-white-50 small">Standar Profesional untuk UMKM & Profil Bisnis</p>
+                <div class="price mt-3">
+                  <span class="currency text-warning">Rp</span>
+                  <span class="amount h2 fw-bold text-white">1.799</span>
+                  <span class="duration text-white-50">.000</span>
+                </div>
+              </div>
+              <p class="text-warning small fw-bold mb-3">Semua fitur Starter ditambah:</p>
+              <ul class="pricing-features list-unstyled text-white mb-5">
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Hingga 5 Halaman Dinamis</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Optimasi SEO On-Page</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Integrasi Email Bisnis (Kustom)</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Keamanan SSL & Anti-Spam</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> 3x Sesi Revisi Eksklusif</li>
+              </ul>
+              <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20tertarik%20dengan%20Business%20Plan." class="btn btn-warning w-100 fw-bold mt-auto">Pilih Business</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 reveal">
+            <div class="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column">
+              <div class="pricing-header mb-4">
+                <h4 class="text-white">Advanced Custom</h4>
+                <p class="text-white-50 small">Sistem Kustom untuk Kebutuhan Kompleks</p>
+                <div class="price mt-3">
+                  <span class="currency text-white-50">Mulai</span>
+                  <span class="amount h2 fw-bold text-white text-nowrap">5.500</span>
+                  <span class="duration text-white-50">.000</span>
+                  <span class="duration text-white-50">sesuai kompleksitas</span>
+                </div>
+              </div>
+              <p class="text-white-50 small fw-bold mb-3">Semua fitur Business ditambah:</p>
+              <ul class="pricing-features list-unstyled text-white-50 mb-5">
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Sistem Kustom (Laravel/React)</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Fitur E-Commerce / Dashboard</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Advanced Database Architecture</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Integrasi API Pihak Ketiga</li>
+                <li><i class="fas fa-plus-circle text-warning me-2"></i> Prioritas Support & Maintenance</li>
+              </ul>
+              <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20tertarik%20dengan%20Advanced%20Custom." class="btn btn-outline-warning w-100 fw-bold mt-auto">Konsultasi Project</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-padding">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <h2 class="section-title text-warning">Featured Projects</h2>
+          <p class="text-white-50 eks">Eksplorasi karya pilihan dalam pengembangan perangkat lunak.</p>
+        </div>
+
+        <div class="row g-5"> 
+          <div class="col-lg-6 reveal">
+            <div class="project-showcase">
+              <div class="ps-image-wrapper">
+                <img src="assets/project-sim.png" alt="Sistem Monitoring" class="ps-img">
+                <div class="ps-overlay">
+                  <span class="ps-category">Web Application</span>
+                </div>
+              </div>
+              <div class="ps-content mt-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4 class="ps-title text-white mb-0">Sistem Monitoring Indikator Kinerja</h4>
+                </div>
+                <p class="ps-desc text-white-50 mt-3">
+                  Membangun platform monitoring real-time untuk efisiensi pelacakan data indikator akademik secara akurat.
+                </p>
+                <a href="#" class="ps-link-simple">Case Study <i class="fas fa-arrow-right ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="project-showcase">
+              <div class="ps-image-wrapper">
+                <img src="assets/skyvoya.png" alt="SkyVoya Travel" class="ps-img">
+                <div class="ps-overlay">
+                  <span class="ps-category">Landing Page</span>
+                </div>
+              </div>
+              <div class="ps-content mt-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4 class="ps-title text-white mb-0">SkyVoya Travel Agency</h4>
+                </div>
+                <p class="ps-desc text-white-50 mt-3">
+                  Website modern untuk agen perjalanan dengan sistem booking yang intuitif dan desain yang memikat.
+                </p>
+                <a href="https://odivpds.github.io/SkyVoyaTravel/" class="ps-link-simple">Live Preview <i class="fas fa-external-link-alt ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="project-showcase">
+              <div class="ps-image-wrapper">
+                <img src="assets/divgym.png" alt="SkyVoya Travel" class="ps-img">
+                <div class="ps-overlay">
+                  <span class="ps-category">Landing Page</span>
+                </div>
+              </div>
+              <div class="ps-content mt-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4 class="ps-title text-white mb-0">DivGym Fitness Center</h4>
+                </div>
+                <p class="ps-desc text-white-50 mt-3">
+                  Website modern untuk pusat kebugaran dengan sistem booking yang intuitif dan desain yang memikat.
+                </p>
+                <a href="https://odivpds.github.io/DivGym/" class="ps-link-simple">Live Preview <i class="fas fa-external-link-alt ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 reveal">
+            <div class="project-showcase">
+              <div class="ps-image-wrapper">
+                <img src="assets/lesstresso.png" alt="Lesstresso" class="ps-img">
+                <div class="ps-overlay">
+                  <span class="ps-category">Landing Page</span>
+                </div>
+              </div>
+              <div class="ps-content mt-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4 class="ps-title text-white mb-0">Lesstresso</h4>
+                </div>
+                <p class="ps-desc text-white-50 mt-3">
+                  Website modern untuk toko kopi desain yang memikat.
+                </p>
+                <a href="https://odivpds.github.io/Lesstresso/" class="ps-link-simple">Live Preview <i class="fas fa-external-link-alt ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-padding bg-darker ">
+      <div class="container">
+        <div class="contact-box p-5 rounded-4 shadow-lg reveal">
+          <div class="row align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+              <h2 class="text-white display-6 fw-bold">Mari Berkolaborasi</h2>
+              <p class="text-white">Punya ide proyek atau butuh bantuan dalam pengembangan web? Saya siap membantu.</p>
+              <div class="mt-4">
+                <p class="text-white mb-2"><i class="fas fa-envelope text-warning me-2"></i> agusprana31@gmail.com</p>
+                <p class="text-white mb-2"><i class="fab fa-github text-warning me-2"></i> odivpds</p>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <form id="contactForm" action="https://formsubmit.co/agusprana31@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio!">
+                <input type="hidden" name="_template" value="table"> 
+                <input type="hidden" name="_captcha" value="false"> 
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <input type="text" name="Full Name" class="form-control" placeholder="Nama Anda" required>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" name="Email Address" class="form-control" placeholder="Email Anda" required>
+                  </div>
+                  <div class="col-12">
+                    <textarea name="Message" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" id="submitBtn" class="btn btn-warning w-100 fw-bold py-3">
+                      Kirim Sekarang
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4 text-center border-top border-secondary">
+      <p class="text-white small mb-0">© 2022 Putu Agus Prana Dhiva Satvika. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." 
+      class="whatsapp-float"  
+      target="_blank" 
+      rel="noopener noreferrer"
+      aria-label="Hubungi saya di WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+      <span class="tooltip-text">Chat Saya</span>
+    </a>
+  </div>
 </body>
 </html>

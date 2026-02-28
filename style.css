@@ -38,7 +38,7 @@ body.light-mode .ps-title {
 }
 
 body.light-mode .ps-desc {
-  color: var(--text-muted) !important; /* Menggunakan warna abu-abu gelap dari variabel Anda */
+  color: var(--text-muted) !important; 
   opacity: 1; 
 }
 body.light-mode .ps-link-simple {
@@ -241,7 +241,6 @@ body.light-mode .pricing-header p {
   color: var(--text-muted) !important;
 }
 
-/* List Fitur dalam Paket */
 body.light-mode .pricing-features li {
   color: var(--text-primary) !important;
 }
@@ -383,14 +382,13 @@ ul.text-white.small {
 
 .marquee-wrapper {
   width: 100%; 
-  margin: 0 auto; /* Tengah-tengah */
+  margin: 0 auto; 
   overflow: hidden;
   position: relative;
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-/* Track yang berisi item */
 .marquee-track {
   display: flex;
   width: max-content; 
@@ -551,7 +549,6 @@ ul.text-white.small {
   font-size: 0.9rem;
   margin-top: 10px;
   padding-bottom: 2px;
-  /* border-bottom: 2px solid var(--accent); */
   transition: 0.3s;
 }
 
@@ -656,7 +653,204 @@ ul.text-white.small {
   overflow: hidden;
 }
 
-/* Interaksi Pricing Card hanya untuk Desktop */
+/* WELCOME OVERLAY STYLES */
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    background: #020617;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logo-text {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -5px;
+}
+.logo-text .dot { color: var(--accent); }
+
+/* Animasi konten di dalam overlay */
+.loader-line {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.loader-line::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: white;
+    animation: loading-line 2s infinite;
+}
+
+.btn-entrance {
+    position: relative;
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-entrance span { position: relative; z-index: 2; }
+
+.btn-entrance:hover {
+    color: #0f172a;
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+.btn-entrance::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--accent);
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.btn-entrance:hover::before { left: 0; }
+
+.welcome-overlay.exit {
+    opacity: 0;
+    transform: scale(1.5); 
+    pointer-events: none; 
+}
+
+.btn-cinematic {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 12px 35px;
+    letter-spacing: 5px;
+    font-size: 0.7rem;
+    border-radius: 2px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.btn-cinematic:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+    text-shadow: 0 0 10px white;
+}
+
+.content-hidden {
+    opacity: 0;
+    transform: scale(0.9); 
+    filter: blur(20px);
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                filter 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-visible {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+@keyframes loading-line {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#main-content {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(0.9) translateY(30px); 
+    transition: 
+        opacity 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), 
+        filter 1.5s ease, 
+        transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    visibility: hidden; 
+}
+
+#main-content.reveal-site {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+    visibility: visible;
+}
+
+.music-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: var(--secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--accent);
+  padding: 10px 15px;
+  border-radius: 50px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-float:hover {
+  transform: scale(1.05);
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.music-status {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+body.light-mode .music-float {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.music-playing i {
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+  animation: music-pulse 1.2s infinite;
+}
+
+@keyframes music-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .music-float {
+    bottom: 80px;
+    padding: 8px 12px;
+  }
+  .music-status { display: none; } 
+}
+
+
 @media (hover: hover) {
   .pricing-card:hover {
     transform: translateY(-15px);
@@ -668,7 +862,6 @@ ul.text-white.small {
     transform: scale(1.08) translateY(-10px);
   }
   
-  /* Aturan tambahan untuk Light Mode jika ada hover */
   body.light-mode .pricing-card:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
   }
@@ -704,7 +897,6 @@ ul.text-white.small {
   letter-spacing: -1px;
 }
 
-/* Memastikan transisi antar section smooth */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
