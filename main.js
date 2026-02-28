@@ -6,14 +6,11 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 
-// Paksa ke atas sebelum render
 window.scrollTo(0, 0);
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Paksa ke atas setelah DOM siap
   window.scrollTo(0, 0);
 
-  // === SELEKTOR ELEMEN ===
   const btnClickSFX = document.getElementById('btnClickSFX');
   const welcomeOverlay = document.getElementById('welcome-overlay');
   const startBtn = document.getElementById('start-btn');
@@ -22,14 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const swooshSFX = document.getElementById('swooshSFX');
   const musicToggle = document.getElementById('musicToggle');
 
-  // Lock scroll di awal
   document.body.classList.add('locked');
 
-  // === GLOBAL CLICK SFX ===
   document.addEventListener('click', function(e) {
     const target = e.target.closest('button, .btn, .nav-link, .pc-link, .ps-link-simple');
     
-    // JANGAN bunyikan klik biasa jika yang diklik adalah tombol START (agar hanya suara swoosh)
     if (target && target !== startBtn && btnClickSFX) {
       btnClickSFX.currentTime = 0;
       btnClickSFX.volume = 0.4;
@@ -37,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // === FUNGSI UPDATE UI MUSIK ===
   function updateMusicUI(isPlaying) {
     if (!musicToggle) return;
     const icon = musicToggle.querySelector('i');
@@ -46,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isPlaying) {
       musicToggle.classList.add('music-playing');
       if (icon) {
-        // Hapus semua kemungkinan class ikon mute, lalu tambah ikon up
         icon.classList.remove('fa-volume-mute', 'fa-volume-off', 'fa-volume-xmark');
         icon.classList.add('fa-volume-up');
       }
@@ -61,10 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // === ENTRANCE LOGIC (START BUTTON) ===
   if (startBtn) {
     startBtn.addEventListener('click', function() {
-        // Play Swoosh
         if(swooshSFX) {
           swooshSFX.volume = 0.6;
           swooshSFX.play();
@@ -75,13 +65,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (mainContent) mainContent.classList.add('reveal-site');
             document.body.classList.remove('locked');
 
-            // Play & Sync Music
             if(bgMusic) {
                 bgMusic.volume = 0;
                 bgMusic.play();
-                updateMusicUI(true); // Sinkronkan tombol ke ON
+                updateMusicUI(true);
 
-                // Fade In Volume
                 let vol = 0;
                 const fadeIn = setInterval(() => {
                     if (vol < 0.2) {
@@ -100,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // === MANUAL MUSIC TOGGLE ===
   if(musicToggle) {
     musicToggle.addEventListener('click', function() {
         if (bgMusic.paused) {
