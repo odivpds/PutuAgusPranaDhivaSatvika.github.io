@@ -152,19 +152,15 @@ document.addEventListener('DOMContentLoaded', function () {
     button.addEventListener('click', () => {
       const targetId = button.getAttribute('data-target');
 
-      // 1. Ubah status tombol active
       tabButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
 
-      // 2. Tampilkan grid yang sesuai
       grids.forEach(grid => {
         if (grid.id === targetId) {
           grid.classList.remove('d-none');
           
-          // Trigger Animasi Reveal untuk elemen di dalam tab baru
           const revealElements = grid.querySelectorAll('.reveal');
           revealElements.forEach(el => {
-            // Beri sedikit delay agar browser sempat memproses tampilan
             setTimeout(() => {
               el.classList.add('visible');
             }, 100);
