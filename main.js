@@ -145,6 +145,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { threshold: 0.15 });
 
+  const tabButtons = document.querySelectorAll('.btn-tab');
+  const grids = document.querySelectorAll('.pricing-grid');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+
+      // 1. Ubah status tombol active
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // 2. Tampilkan grid yang sesuai
+      grids.forEach(grid => {
+        if (grid.id === targetId) {
+          grid.classList.remove('d-none');
+          
+          // Trigger Animasi Reveal untuk elemen di dalam tab baru
+          const revealElements = grid.querySelectorAll('.reveal');
+          revealElements.forEach(el => {
+            // Beri sedikit delay agar browser sempat memproses tampilan
+            setTimeout(() => {
+              el.classList.add('visible');
+            }, 100);
+          });
+        } else {
+          grid.classList.add('d-none');
+        }
+      });
+    });
+  });
+
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   const contactForm = document.getElementById('contactForm');

@@ -762,6 +762,67 @@ ul.text-white.small {
     filter: blur(0);
 }
 
+.mainpaket-nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+}
+
+.btn-tab {
+  background: white;
+  border: none;
+  color: #1e293b;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  white-space: nowrap; 
+}
+
+.btn-tab.active {
+  background: var(--accent); 
+  color: #000;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.btn-tab:hover:not(.active) {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.pricing-grid {
+  display: flex !important;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.pricing-grid.d-none {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .mainpaket-nav {
+    /* overflow-x: auto; */
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .btn-tab {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
+}
+
+.pricing-grid {
+  animation: fadeInGrid 0.5s ease-in-out;
+}
+
+@keyframes fadeInGrid {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 body.locked {
     overflow: hidden;
 }
@@ -1128,7 +1189,7 @@ html {
 .form-control:focus {
   background: rgba(255, 255, 255, 0.1) !important;
   border-color: var(--accent) !important;
-  box-shadow: 0 0 0 0.25 darkredrem rgba(245, 158, 11, 0.25) !important;
+  box-shadow: 0 0 0 0.25 0.25rem rgba(245, 158, 11, 0.25) !important;
 }
 
 ul.text-white {
