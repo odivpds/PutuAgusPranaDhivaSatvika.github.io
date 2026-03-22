@@ -995,6 +995,11 @@ html {
     --section-spacing: 60px;
   }
 
+  section {
+    padding-top: 0 !important;
+    padding-bottom: 30px !important;
+  }
+
   .section-padding {
     padding: var(--section-spacing) 0;
   }
