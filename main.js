@@ -19,7 +19,70 @@ document.addEventListener('DOMContentLoaded', function () {
   const swooshSFX = document.getElementById('swooshSFX');
   const musicToggle = document.getElementById('musicToggle');
 
-  document.body.classList.add('locked');
+  function playMusicFromStorage() {
+    if (!bgMusic) return;
+
+    const savedTime = localStorage.getItem('musicCurrentTime');
+    const wasPlaying = localStorage.getItem('musicWasPlaying');
+
+    if (wasPlaying === 'true') {
+      if (savedTime) bgMusic.currentTime = parseFloat(savedTime);
+      bgMusic.volume = 0;
+
+      bgMusic.play().then(() => {
+        updateMusicUI(true);
+        fadeInMusic();
+      }).catch(() => {
+        console.log("Menunggu klik user untuk melanjutkan musik...");
+        
+        const resumeAction = () => {
+          if (bgMusic.paused && localStorage.getItem('musicWasPlaying') === 'true') {
+            bgMusic.play().then(() => {
+              updateMusicUI(true);
+              fadeInMusic();
+              document.removeEventListener('click', resumeAction);
+              document.removeEventListener('scroll', resumeAction);
+              document.removeEventListener('touchstart', resumeAction);
+            });
+          }
+        };
+
+        document.addEventListener('click', resumeAction);
+        document.addEventListener('scroll', resumeAction);
+        document.addEventListener('touchstart', resumeAction);
+      });
+    }
+  }
+
+  function fadeInMusic() {
+    let vol = 0;
+    bgMusic.volume = 0;
+    const fadeIn = setInterval(() => {
+      if (vol < 0.2) {
+        vol += 0.02;
+        bgMusic.volume = vol;
+      } else {
+        clearInterval(fadeIn);
+      }
+    }, 150);
+  }
+
+  if (sessionStorage.getItem('experience-started')) {
+    if (welcomeOverlay) welcomeOverlay.remove();
+    
+    playMusicFromStorage(); 
+
+    mainContent.style.transition = 'none';
+    mainContent.classList.add('reveal-site');
+    window.scrollTo(0, 0);
+    document.body.classList.remove('locked');
+
+    setTimeout(() => {
+      mainContent.style.transition = '';
+    }, 100);
+  } else {
+    document.body.classList.add('locked');
+  }
 
   document.addEventListener('click', function(e) {
     const target = e.target.closest('button, .btn, .nav-link, .pc-link, .ps-link-simple');
@@ -57,28 +120,18 @@ document.addEventListener('DOMContentLoaded', function () {
     startBtn.addEventListener('click', function() {
         if(swooshSFX) {
           swooshSFX.volume = 0.6;
-          swooshSFX.play();
+          swooshSFX.play().catch(() => {});
         }
 
         setTimeout(() => {
+          sessionStorage.setItem('experience-started', 'true');
             if (welcomeOverlay) welcomeOverlay.classList.add('exit');
             if (mainContent) mainContent.classList.add('reveal-site');
             document.body.classList.remove('locked');
 
             if(bgMusic) {
-                bgMusic.volume = 0;
-                bgMusic.play();
-                updateMusicUI(true);
-
-                let vol = 0;
-                const fadeIn = setInterval(() => {
-                    if (vol < 0.2) {
-                        vol += 0.02;
-                        bgMusic.volume = vol;
-                    } else {
-                        clearInterval(fadeIn);
-                    }
-                }, 100);
+                localStorage.setItem('musicWasPlaying', 'true');
+                playMusicFromStorage();
             }
         }, 150);
 
@@ -92,9 +145,11 @@ document.addEventListener('DOMContentLoaded', function () {
     musicToggle.addEventListener('click', function() {
         if (bgMusic.paused) {
             bgMusic.play();
+            localStorage.setItem('musicWasPlaying', 'true');
             updateMusicUI(true);
         } else {
             bgMusic.pause();
+            localStorage.setItem('musicWasPlaying', 'false');
             updateMusicUI(false);
         }
     });
@@ -105,14 +160,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (savedTheme === 'light') {
     document.body.classList.add('light-mode');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    if (themeToggle) themeToggle.querySelector('i').className = 'fas fa-sun';
   }
-
   themeToggle.addEventListener('click', function () {
     document.body.classList.toggle('light-mode');
     const isLight = document.body.classList.contains('light-mode');
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    // Hanya ganti class icon saja
+    themeToggle.querySelector('i').className = isLight ? 'fas fa-sun' : 'fas fa-moon';
   });
 
   const navbar = document.querySelector('.navbar');
@@ -199,5 +254,26 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  if (bgMusic) {
+    bgMusic.addEventListener('timeupdate', () => {
+      if (!bgMusic.paused) {
+        localStorage.setItem('musicCurrentTime', bgMusic.currentTime);
+      }
+    });
+  }
+
+  window.addEventListener('beforeunload', () => {
+    if (bgMusic && !bgMusic.paused) {
+      localStorage.setItem('musicCurrentTime', bgMusic.currentTime);
+      localStorage.setItem('musicWasPlaying', 'true');
+    }
+  });
+
+  setInterval(() => {
+    if (bgMusic && !bgMusic.paused) {
+      localStorage.setItem('musicCurrentTime', bgMusic.currentTime);
+    }
+  }, 1000);
 
 });
