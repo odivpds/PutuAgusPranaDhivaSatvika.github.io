@@ -281,6 +281,32 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Font Palette */
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+h2, h3, h4, h5, h6, .display-3, .display-4, .display-5, .display-6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+small {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+blockquote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
 ul.text-white.small {
   padding-left: 1rem;
   line-height: 1.5;
@@ -445,7 +471,7 @@ ul.text-white.small {
 /* Section Title */
 .section-title {
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -1079,6 +1105,13 @@ html {
     justify-content: center; 
     flex-direction: column; 
     gap: 15px !important;
+    align-items: center;
+  }
+
+  .hero-section .content-column .d-flex > a.btn {
+    width: 100%;
+    max-width: 200px;
+    flex: 0 1 auto;
   }
 
   .hero-image-full {
@@ -1156,6 +1189,11 @@ html {
 
   #business .display-5 {
     font-size: 1.8rem !important; 
+  }
+
+  .hero-section .content-column .d-flex > a.btn {
+    width: 100%;
+    max-width: 250px;
   }
 
   .pricing-card {
