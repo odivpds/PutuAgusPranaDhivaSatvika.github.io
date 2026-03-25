@@ -294,6 +294,10 @@ ul.text-white.small {
   padding: 100px 0;
 }
 
+#business {
+  padding-top: 30px;
+}
+
 /* Navbar */
 .navbar {
   transition: 0.4s;
@@ -1156,6 +1160,8 @@ html {
 
   .pricing-card {
     padding: 1.5rem !important;
+    max-width: 100%;
+    margin: 10px 0px 10px 23px !important;
   }
 
   .pricing-card .amount {

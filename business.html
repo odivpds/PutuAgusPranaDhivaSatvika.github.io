@@ -14,8 +14,16 @@
 </head>
 <body class="reveal-site"> 
   
-  <audio id="btnClickSFX" preload="auto"><source src="assets/click.mp3" type="audio/mpeg"></audio>
-  <audio id="bgMusic" loop preload="auto"><source src="assets/musicbalance.mp3" type="audio/mpeg"></audio>
+  <audio id="btnClickSFX" preload="auto">
+    <source src="assets/click.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="swooshSFX" preload="auto">
+    <source src="assets/click.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/musicbalance.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
   
   <button id="musicToggle" class="music-float" aria-label="Toggle Music">
     <i class="fas fa-volume-mute"></i>
@@ -51,7 +59,7 @@
 
     <section id="business" class="section-padding bg-darker">
       <div class="container">
-        <div class="text-center mt-5 mb-5 reveal">
+        <div class="text-center mb-5 reveal" style="padding-top: 7.5rem;">
           <h5 class="text-warning fw-bold uppercase" style="letter-spacing: 2px;">PRICELIST LAYANAN</h5>
           <h2 class="display-5 fw-bold text-white">Investasi Digital Masa Depan: Cepat, Aman, & Eksklusif</h2>
           <p class="text-white-50 mx-auto mb-5" style="max-width: 800px;">
@@ -67,7 +75,6 @@
         </div>
 
         <div class="tab-content">
-          
           <div class="row g-4 justify-content-center pricing-grid active" id="landing-page">
             <div class="col-lg-4 col-md-6 reveal">
               <div class="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column">
@@ -173,26 +180,37 @@
 
     <section id="contact" class="section-padding">
       <div class="container">
-        <div class="contact-box p-5 rounded-4 shadow-lg reveal">
+        <div class="contact-box p-5 rounded-4 reveal">
           <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
-              <h2 class="text-white display-6 fw-bold">Konsultasi Project</h2>
-              <p class="text-white">Punya kebutuhan website kustom yang tidak ada di list? Hubungi saya untuk penawaran harga terbaik.</p>
+              <h2 class="text-white display-6 fw-bold">Mari Berkolaborasi</h2>
+              <p class="text-white">Punya ide proyek atau butuh bantuan dalam pengembangan web? Saya siap membantu.</p>
               <div class="mt-4">
                 <p class="text-white mb-2"><i class="fas fa-envelope text-warning me-2"></i> agusprana31@gmail.com</p>
-                <p class="text-white mb-2"><i class="fab fa-whatsapp text-warning me-2"></i> +62 822-4725-0393</p>
+                <p class="text-white mb-2"><i class="fab fa-github text-warning me-2"></i> odivpds</p>
               </div>
             </div>
             <div class="col-lg-7">
               <form id="contactForm" action="https://formsubmit.co/agusprana31@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Pesan Baru dari Business Page!">
+                <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio!">
                 <input type="hidden" name="_template" value="table"> 
                 <input type="hidden" name="_captcha" value="false"> 
+
                 <div class="row g-3">
-                  <div class="col-md-6"><input type="text" name="Full Name" class="form-control" placeholder="Nama Anda" required></div>
-                  <div class="col-md-6"><input type="email" name="Email Address" class="form-control" placeholder="Email Anda" required></div>
-                  <div class="col-12"><textarea name="Message" class="form-control" rows="4" placeholder="Detail project yang Anda butuhkan..." required></textarea></div>
-                  <div class="col-12"><button type="submit" id="submitBtn" class="btn btn-warning w-100 fw-bold py-3">Kirim Sekarang</button></div>
+                  <div class="col-md-6">
+                    <input type="text" name="Full Name" class="form-control" placeholder="Nama Anda" required>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" name="Email Address" class="form-control" placeholder="Email Anda" required>
+                  </div>
+                  <div class="col-12">
+                    <textarea name="Message" class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" id="submitBtn" class="btn btn-warning w-100 fw-bold py-3">
+                      Kirim Sekarang
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
