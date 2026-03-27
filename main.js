@@ -1,6 +1,6 @@
 /**
  * Agus Prana Portfolio - Main JavaScript
- * Consolidated & Clean Version
+ * Consolidated & Clean Version (Bug-Fixed)
  */
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
@@ -19,81 +19,60 @@ document.addEventListener('DOMContentLoaded', function () {
   const swooshSFX = document.getElementById('swooshSFX');
   const musicToggle = document.getElementById('musicToggle');
 
-  function playMusicFromStorage() {
+  // ========== MUSIC HELPERS ==========
+
+  /**
+   * Fade in musik secara halus ke target volume.
+   * @param {number} targetVol - Volume target (default 0.2)
+   */
+  function fadeInMusic(targetVol = 0.2) {
     if (!bgMusic) return;
-
-    const savedTime = localStorage.getItem('musicCurrentTime');
-    const wasPlaying = localStorage.getItem('musicWasPlaying');
-
-    if (wasPlaying === 'true') {
-      if (savedTime) bgMusic.currentTime = parseFloat(savedTime);
-      bgMusic.volume = 0;
-
-      bgMusic.play().then(() => {
-        updateMusicUI(true);
-        fadeInMusic();
-      }).catch(() => {
-        console.log("Menunggu klik user untuk melanjutkan musik...");
-        
-        const resumeAction = () => {
-          if (bgMusic.paused && localStorage.getItem('musicWasPlaying') === 'true') {
-            bgMusic.play().then(() => {
-              updateMusicUI(true);
-              fadeInMusic();
-              document.removeEventListener('click', resumeAction);
-              document.removeEventListener('scroll', resumeAction);
-              document.removeEventListener('touchstart', resumeAction);
-            });
-          }
-        };
-
-        document.addEventListener('click', resumeAction);
-        document.addEventListener('scroll', resumeAction);
-        document.addEventListener('touchstart', resumeAction);
-      });
-    }
-  }
-
-  function fadeInMusic() {
     let vol = 0;
     bgMusic.volume = 0;
     const fadeIn = setInterval(() => {
-      if (vol < 0.2) {
-        vol += 0.02;
+      vol += 0.02;
+      if (vol >= targetVol) {
+        vol = targetVol; // Clamp agar tidak melebihi target (fix floating point)
         bgMusic.volume = vol;
-      } else {
         clearInterval(fadeIn);
+      } else {
+        bgMusic.volume = vol;
       }
     }, 150);
   }
 
-  if (sessionStorage.getItem('experience-started')) {
-    if (welcomeOverlay) welcomeOverlay.remove();
-    
-    playMusicFromStorage(); 
-
-    mainContent.style.transition = 'none';
-    mainContent.classList.add('reveal-site');
-    window.scrollTo(0, 0);
-    document.body.classList.remove('locked');
-
-    setTimeout(() => {
-      mainContent.style.transition = '';
+  /**
+   * Fade out musik secara halus lalu pause.
+   */
+  function fadeOutMusic() {
+    if (!bgMusic) return;
+    let vol = bgMusic.volume;
+    const fadeOut = setInterval(() => {
+      vol -= 0.02;
+      if (vol <= 0) {
+        vol = 0;
+        bgMusic.volume = 0;
+        bgMusic.pause();
+        clearInterval(fadeOut);
+      } else {
+        bgMusic.volume = vol;
+      }
     }, 100);
-  } else {
-    document.body.classList.add('locked');
   }
 
-  document.addEventListener('click', function(e) {
-    const target = e.target.closest('button, .btn, .nav-link, .pc-link, .ps-link-simple');
-    
-    if (target && target !== startBtn && btnClickSFX) {
-      btnClickSFX.currentTime = 0;
-      btnClickSFX.volume = 0.4;
-      btnClickSFX.play().catch(() => {}); 
-    }
-  });
+  /**
+   * Play SFX dengan safety (null-check + catch autoplay policy)
+   */
+  function playSFX(audioEl, volume = 0.4) {
+    if (!audioEl) return;
+    audioEl.currentTime = 0;
+    audioEl.volume = volume;
+    audioEl.play().catch(() => {});
+  }
 
+  /**
+   * Update UI tombol music toggle sesuai state playing/paused.
+   */
   function updateMusicUI(isPlaying) {
     if (!musicToggle) return;
     const icon = musicToggle.querySelector('i');
@@ -116,12 +95,124 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /**
+   * Lanjutkan musik dari posisi yang tersimpan di localStorage.
+   * Digunakan saat navigasi antar halaman.
+   */
+  function playMusicFromStorage() {
+    if (!bgMusic) return;
+
+    const savedTime = localStorage.getItem('musicCurrentTime');
+    const wasPlaying = localStorage.getItem('musicWasPlaying');
+
+    if (wasPlaying === 'true') {
+      const parsedTime = parseFloat(savedTime);
+      if (!isNaN(parsedTime) && parsedTime > 0) {
+        bgMusic.currentTime = parsedTime;
+      }
+      bgMusic.volume = 0;
+
+      bgMusic.play().then(() => {
+        updateMusicUI(true);
+        fadeInMusic();
+      }).catch(() => {
+        console.log("Menunggu interaksi user untuk melanjutkan musik...");
+        
+        const resumeAction = () => {
+          if (bgMusic.paused && localStorage.getItem('musicWasPlaying') === 'true') {
+            bgMusic.play().then(() => {
+              updateMusicUI(true);
+              fadeInMusic();
+              document.removeEventListener('click', resumeAction);
+              document.removeEventListener('scroll', resumeAction);
+              document.removeEventListener('touchstart', resumeAction);
+            }).catch(() => {});
+          }
+        };
+
+        document.addEventListener('click', resumeAction);
+        document.addEventListener('scroll', resumeAction);
+        document.addEventListener('touchstart', resumeAction);
+      });
+    }
+  }
+
+  /**
+   * Play musik dari awal (pertama kali klik Enter Experience).
+   */
+  function playMusicFresh() {
+    if (!bgMusic) return;
+    bgMusic.currentTime = 0;
+    bgMusic.volume = 0;
+
+    bgMusic.play().then(() => {
+      updateMusicUI(true);
+      fadeInMusic();
+    }).catch(() => {
+      console.log("Menunggu interaksi user untuk memulai musik...");
+
+      const startAction = () => {
+        if (bgMusic.paused && localStorage.getItem('musicWasPlaying') === 'true') {
+          bgMusic.play().then(() => {
+            updateMusicUI(true);
+            fadeInMusic();
+            document.removeEventListener('click', startAction);
+            document.removeEventListener('scroll', startAction);
+            document.removeEventListener('touchstart', startAction);
+          }).catch(() => {});
+        }
+      };
+
+      document.addEventListener('click', startAction);
+      document.addEventListener('scroll', startAction);
+      document.addEventListener('touchstart', startAction);
+    });
+  }
+
+  // ========== INITIALIZATION ==========
+
+  if (sessionStorage.getItem('experience-started')) {
+    // Sudah pernah "Enter Experience" — hapus overlay, lanjutkan musik
+    if (welcomeOverlay) welcomeOverlay.remove();
+    
+    playMusicFromStorage(); 
+
+    if (mainContent) {
+      mainContent.style.transition = 'none';
+      mainContent.classList.add('reveal-site');
+    }
+    window.scrollTo(0, 0);
+    document.body.classList.remove('locked');
+
+    setTimeout(() => {
+      if (mainContent) mainContent.style.transition = '';
+    }, 100);
+  } else {
+    document.body.classList.add('locked');
+  }
+
+  // ========== CLICK SFX GLOBAL ==========
+  // Menangkap SEMUA klik pada elemen interaktif di seluruh website
+
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest(
+      'button, .btn, .nav-link, .pc-link, .ps-link-simple, ' +
+      'a.btn-accent, a.btn-outline-accent, a.btn-outline-light, ' +
+      '.btn-tab, .whatsapp-float, .navbar-brand'
+    );
+    
+    // Exclude start-btn karena punya SFX sendiri (swoosh)
+    if (target && target !== startBtn) {
+      playSFX(btnClickSFX, 0.4);
+    }
+  });
+
+  // ========== START BUTTON (Enter Experience) ==========
+
   if (startBtn) {
     startBtn.addEventListener('click', function() {
-        if(swooshSFX) {
-          swooshSFX.volume = 0.6;
-          swooshSFX.play().catch(() => {});
-        }
+        // Play swoosh SFX
+        playSFX(swooshSFX, 0.6);
 
         setTimeout(() => {
           sessionStorage.setItem('experience-started', 'true');
@@ -129,9 +220,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (mainContent) mainContent.classList.add('reveal-site');
             document.body.classList.remove('locked');
 
-            if(bgMusic) {
+            // Mulai musik dari awal (bukan dari storage)
+            if (bgMusic) {
                 localStorage.setItem('musicWasPlaying', 'true');
-                playMusicFromStorage();
+                playMusicFresh();
             }
         }, 150);
 
@@ -141,40 +233,59 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if(musicToggle) {
+  // ========== MUSIC TOGGLE ==========
+
+  if (musicToggle && bgMusic) {
     musicToggle.addEventListener('click', function() {
         if (bgMusic.paused) {
-            bgMusic.play();
+            bgMusic.volume = 0;
+            bgMusic.play().then(() => {
+              updateMusicUI(true);
+              fadeInMusic();
+            }).catch(() => {});
             localStorage.setItem('musicWasPlaying', 'true');
-            updateMusicUI(true);
         } else {
-            bgMusic.pause();
+            fadeOutMusic();
             localStorage.setItem('musicWasPlaying', 'false');
             updateMusicUI(false);
         }
     });
   }
 
+  // ========== THEME TOGGLE ==========
+
   const themeToggle = document.getElementById('themeToggle');
   const savedTheme = localStorage.getItem('theme') || 'dark';
 
   if (savedTheme === 'light') {
     document.body.classList.add('light-mode');
-    if (themeToggle) themeToggle.querySelector('i').className = 'fas fa-sun';
+    if (themeToggle) {
+      const icon = themeToggle.querySelector('i');
+      if (icon) icon.className = 'fas fa-sun';
+    }
   }
-  themeToggle.addEventListener('click', function () {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    // Hanya ganti class icon saja
-    themeToggle.querySelector('i').className = isLight ? 'fas fa-sun' : 'fas fa-moon';
-  });
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      const icon = themeToggle.querySelector('i');
+      if (icon) icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+    });
+  }
+
+  // ========== NAVBAR SCROLL EFFECT ==========
 
   const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
-    else navbar.classList.remove('nav-scrolled');
-  });
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
+      else navbar.classList.remove('nav-scrolled');
+    });
+  }
+
+  // ========== SMOOTH SCROLL ==========
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -182,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const targetEl = document.querySelector(targetId);
       if (targetId.length > 1 && targetEl) {
         e.preventDefault();
-        const offset = navbar.offsetHeight || 72;
+        const offset = (navbar ? navbar.offsetHeight : 72) || 72;
         window.scrollTo({
           top: targetEl.offsetTop - offset - 10,
           behavior: 'smooth'
@@ -190,6 +301,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // ========== REVEAL ON SCROLL ==========
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -199,6 +312,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }, { threshold: 0.15 });
+
+  // ========== PRICING TABS ==========
 
   const tabButtons = document.querySelectorAll('.btn-tab');
   const grids = document.querySelectorAll('.pricing-grid');
@@ -229,12 +344,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+  // ========== CONTACT FORM ==========
+
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      btnClickSFX.play();
+      playSFX(btnClickSFX, 0.4);
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
+      if (!btn) return;
       const originalText = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
       btn.disabled = true;
@@ -248,12 +366,16 @@ document.addEventListener('DOMContentLoaded', function () {
           alert('Pesan terkirim!');
           this.reset();
         } else alert('Gagal mengirim.');
+      }).catch(() => {
+        alert('Terjadi kesalahan jaringan.');
       }).finally(() => {
         btn.innerHTML = originalText;
         btn.disabled = false;
       });
     });
   }
+
+  // ========== MUSIC PERSISTENCE ==========
 
   if (bgMusic) {
     bgMusic.addEventListener('timeupdate', () => {
