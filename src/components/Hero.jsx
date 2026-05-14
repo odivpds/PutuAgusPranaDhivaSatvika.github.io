@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import agusPranaImg from '../assets/AgusPrana.jpg';
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -58,7 +59,7 @@ const Hero = () => {
           zIndex: 2,
           background: 'linear-gradient(to right, var(--primary) 0%, var(--primary) 20%, transparent 100%)'
         }}></div>
-        <img src="/assets/AgusPrana.jpg" alt="Agus Prana" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+        <img src={agusPranaImg} alt="Agus Prana" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
       </motion.div>
     </header>
   );

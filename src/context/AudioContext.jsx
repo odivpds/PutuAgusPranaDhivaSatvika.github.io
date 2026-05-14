@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import musicBalanceAudio from '../assets/musicbalance.mp3';
+import clickAudio from '../assets/click.mp3';
 
 const AudioContext = createContext(null);
 
@@ -10,11 +12,11 @@ export const AudioProvider = ({ children }) => {
 
   // Initialize Audio Objects
   useEffect(() => {
-    bgMusicRef.current = new Audio('/assets/musicbalance.mp3');
+    bgMusicRef.current = new Audio(musicBalanceAudio);
     bgMusicRef.current.loop = true;
     
-    clickSFXRef.current = new Audio('/assets/click.mp3');
-    swooshSFXRef.current = new Audio('/assets/click.mp3'); // using click as swoosh initially because it's the same in old code
+    clickSFXRef.current = new Audio(clickAudio);
+    swooshSFXRef.current = new Audio(clickAudio); // using click as swoosh initially because it's the same in old code
     
     // Check saved state
     const savedMusicState = localStorage.getItem('musicWasPlaying');

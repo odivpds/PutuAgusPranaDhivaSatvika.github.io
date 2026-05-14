@@ -1,5 +1,10 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import imgProjectSim from '../assets/project-sim.png';
+import imgLatsu from '../assets/latsu.png';
+import imgDivgym from '../assets/divgym.png';
+import imgLesstresso from '../assets/lesstresso.png';
+import imgSkyvoya from '../assets/skyvoya.png';
 
 const ProjectCard = ({ title, category, image, desc, link, linkText }) => {
   return (
@@ -42,7 +47,7 @@ const Projects = () => {
     {
       title: "Sistem Monitoring Indikator Kinerja",
       category: "Web Application",
-      image: "/assets/project-sim.png",
+      image: imgProjectSim,
       desc: "Membangun platform monitoring real-time untuk efisiensi pelacakan data indikator akademik secara akurat.",
       link: null,
       linkText: ""
@@ -50,7 +55,7 @@ const Projects = () => {
     {
       title: "Latsu Cafe Canggu",
       category: "Landing Page",
-      image: "/assets/latsu.png",
+      image: imgLatsu,
       desc: "Website modern untuk Cafe dengan desain yang memikat.",
       link: "https://odivpds.github.io/LatsuCafe/",
       linkText: "Live Preview"
@@ -58,7 +63,7 @@ const Projects = () => {
     {
       title: "DivGym Fitness Center",
       category: "Landing Page",
-      image: "/assets/divgym.png",
+      image: imgDivgym,
       desc: "Website modern untuk pusat kebugaran dengan sistem booking yang intuitif dan desain yang memikat.",
       link: "https://odivpds.github.io/DivGym/",
       linkText: "Live Preview"
@@ -66,7 +71,7 @@ const Projects = () => {
     {
       title: "Lesstresso",
       category: "Landing Page",
-      image: "/assets/lesstresso.png",
+      image: imgLesstresso,
       desc: "Website modern untuk toko kopi desain yang memikat.",
       link: "https://odivpds.github.io/Lesstresso/",
       linkText: "Live Preview"
@@ -74,7 +79,7 @@ const Projects = () => {
     {
       title: "SkyVoya Travel Agency",
       category: "Landing Page",
-      image: "/assets/skyvoya.png",
+      image: imgSkyvoya,
       desc: "Website modern untuk agen perjalanan dengan sistem booking yang intuitif dan desain yang memikat.",
       link: "https://odivpds.github.io/SkyVoyaTravel/",
       linkText: "Live Preview"
