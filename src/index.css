@@ -628,7 +628,7 @@ ul.text-white.small {
 
   .project-showcase:hover .ps-image-wrapper {
     /* border-color: var(--accent); */
-    box-shadow: 0 0 25px var(--glow-accent);
+    box-shadow: none;
   }
 }
 
@@ -1014,14 +1014,17 @@ body.light-mode .btn-tab:hover:not(.active) {
 @media (max-width: 768px) {
   .mainpaket-nav {
     justify-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    gap: 8px !important;
     -webkit-overflow-scrolling: touch;
   }
 
   .btn-tab {
-    font-size: 0.8rem;
-    padding: 8px 15px;
+    font-size: 0.75rem;
+    padding: 8px 12px;
+    white-space: normal;
   }
 }
 
@@ -1255,16 +1258,16 @@ html {
 /* Tablet & Mobile (Layar di bawah 992px) */
 @media (max-width: 991.98px) {
   :root {
-    --section-spacing: 60px;
+    --section-spacing: 50px;
   }
 
   section {
     padding-top: 0 !important;
-    padding-bottom: 30px !important;
+    padding-bottom: 40px !important;
   }
 
   .section-padding {
-    padding: var(--section-spacing) 0;
+    padding: var(--section-spacing) 20px;
   }
 
   .navbar {
@@ -1376,12 +1379,14 @@ html {
 
   .pricing-card.featured {
     transform: scale(1);
-    margin: 10px 0;
+    margin: 15px 0;
+    padding: 30px 20px !important;
   }
 
   .pricing-card {
-    max-width: 450px;
-    margin: 10px auto;
+    max-width: 100%;
+    margin: 15px auto;
+    padding: 30px 20px !important;
   }
 
   .ps-title {
@@ -1393,18 +1398,39 @@ html {
   }
 
   .display-5 {
-    font-size: 2.2rem;
+    font-size: 2rem;
+  }
+
+  #business .display-5 {
+    font-size: 1.8rem !important;
+  }
+
+  .pricing-header h4 {
+    font-size: 1.3rem;
+  }
+
+  .pricing-features li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .price .amount {
+    font-size: 1.8rem !important;
+  }
+
+  .pricing-grid {
+    row-gap: 20px !important;
   }
 }
 
 /* SmartPhone Kecil (iPhone SE, Galaxy S9 - max 576px) */
 @media (max-width: 575.98px) {
   .display-3 {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
   }
 
   .section-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .row-cols-2>.col {
@@ -1412,34 +1438,67 @@ html {
   }
 
   .navbar-brand {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  #business {
+    padding-top: 80px !important;
   }
 
   #business .display-5 {
-    font-size: 1.8rem !important;
+    font-size: 1.5rem !important;
   }
 
   .hero-section .content-column .d-flex>a.btn {
     width: 100%;
-    max-width: 250px;
+    max-width: 100%;
+  }
+
+  .mainpaket-nav {
+    gap: 6px !important;
+    margin-bottom: 25px;
+    padding: 0 10px 20px 10px;
+  }
+
+  .btn-tab {
+    font-size: 0.7rem;
+    padding: 6px 10px;
   }
 
   .pricing-card {
-    padding: 1.5rem !important;
+    padding: 20px 15px !important;
     max-width: 100%;
-    margin: 10px 0px 10px 23px !important;
+    margin: 12px 0 !important;
+  }
+
+  .pricing-card.featured {
+    margin: 12px 0 !important;
   }
 
   .pricing-card .amount {
-    font-size: 1.75rem !important;
+    font-size: 1.5rem !important;
   }
 
   .pricing-header h4 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .pricing-features li {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .price .currency {
+    font-size: 0.8rem;
+  }
+
+  .price .duration {
     font-size: 0.85rem;
+  }
+
+  .pricing-grid {
+    row-gap: 16px !important;
+    column-gap: 12px !important;
   }
 }
 

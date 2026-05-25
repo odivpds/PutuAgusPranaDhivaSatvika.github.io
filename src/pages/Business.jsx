@@ -23,9 +23,9 @@ const Business = () => {
           transition={{ duration: 0.8 }}
         >
           <h5 className="text-accent fw-bold uppercase" style={{ letterSpacing: '2px' }}>PRICELIST LAYANAN</h5>
-          <h2 className="display-5 fw-bold text-white">Investasi Digital Masa Depan: Cepat, Aman, & Eksklusif</h2>
+          <h2 className="display-5 fw-bold text-white">Website Modern untuk Bisnis Bali yang Ingin Tampil Lebih Profesional & Dipercaya Customer.</h2>
           <p className="text-white-50 mx-auto mb-5" style={{ maxWidth: '800px' }}>
-            Lupakan website lambat. Kami menghadirkan <strong>Hand-Crafted Code</strong> (Bukan WordPress). Website Anda akan 10x lebih ringan, aman, dan memberikan kesan premium.
+              Kami membuat website modern dengan performa cepat, tampilan elegan, dan pengalaman pengguna yang nyaman di semua device — dirancang untuk membantu bisnis Anda terlihat lebih profesional.
           </p>
 
           <div className="mainpaket-nav d-flex justify-content-center flex-wrap gap-2 mb-5">
@@ -51,8 +51,8 @@ const Business = () => {
                 <div className="col-lg-4 col-md-6">
                   <div className="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column">
                     <div className="pricing-header mb-4">
-                      <h4 className="text-white">Starter Plan</h4>
-                      <p className="text-white-50 small">Esensial untuk Personal Brand & UMKM</p>
+                      <h4 className="text-white">Launch</h4>
+                      <p className="text-white-50 small">  Cocok untuk bisnis kecil yang ingin mulai tampil profesional di internet.</p>
                       <div className="price mt-3">
                         <span className="currency text-accent">Rp</span>
                         <span className="amount h2 fw-bold text-white">999</span>
@@ -60,14 +60,14 @@ const Business = () => {
                       </div>
                     </div>
                     <ul className="pricing-features list-unstyled text-white-50 mb-5">
-                      <li><i className="fas fa-check text-accent me-2"></i> 1 Landing Page Profesional</li>
+                      <li><i className="fas fa-check text-accent me-2"></i> Landing Page Modern & Mobile Friendly</li>
                       <li><i className="fas fa-check text-accent me-2"></i> Domain .com/.id (1 Tahun)</li>
                       <li><i className="fas fa-check text-accent me-2"></i> Cloud Hosting (1 Tahun)</li>
-                      <li><i className="fas fa-check text-accent me-2"></i> Integrasi WhatsApp Direct</li>
-                      <li><i className="fas fa-check text-accent me-2"></i> Setup Google Search Console</li>
+                      <li><i className="fas fa-check text-accent me-2"></i> Tombol WhatsApp Langsung ke Customer</li>
+                      <li><i className="fas fa-check text-accent me-2"></i> Website Siap Terindex di Google</li>
                       <li><i className="fas fa-check text-accent me-2"></i> Garansi Maintenance 15 Hari</li>
                     </ul>
-                    <a href={getWaLink('Landing Page Starter')} className="btn btn-outline-accent w-100 fw-bold mt-auto" onClick={() => playClickSFX()}>Order Sekarang</a>
+                    <a href={getWaLink('Landing Page Starter')} className="btn btn-outline-accent w-100 fw-bold mt-auto" onClick={() => playClickSFX()}>Konsultasi Gratis</a>
                   </div>
                 </div>
 
@@ -86,11 +86,9 @@ const Business = () => {
                     </div>
                     <p className="text-accent small fw-bold mb-3">Semua fitur Starter, plus:</p>
                     <ul className="pricing-features list-unstyled text-white mb-5">
-                      <li><i className="fas fa-plus-circle text-accent me-2"></i> Hingga 5 Halaman Utama</li>
-                      <li><i className="fas fa-plus-circle text-accent me-2"></i> Optimasi SEO On-Page</li>
-                      <li><i className="fas fa-plus-circle text-accent me-2"></i> Email Bisnis (nama@bisnis.com)</li>
-                      <li><i className="fas fa-plus-circle text-accent me-2"></i> Advanced Copywriting Persuasif</li>
-                      <li><i className="fas fa-plus-circle text-accent me-2"></i> Keamanan SSL & Anti-Spam</li>
+                      <li><i className="fas fa-plus-circle text-accent me-2"></i> Multi-pages</li>
+                      <li><i className="fas fa-plus-circle text-accent me-2"></i> Bisnis Serius</li>
+                      <li><i className="fas fa-plus-circle text-accent me-2"></i> UI Advanced</li>
                     </ul>
                     <a href={getWaLink('Landing Page Growth')} className="btn btn-accent w-100 fw-bold mt-auto" onClick={() => playClickSFX()}>Order Sekarang</a>
                   </div>
@@ -100,15 +98,15 @@ const Business = () => {
                 <div className="col-lg-4 col-md-6">
                   <div className="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column">
                     <div className="pricing-header mb-4">
-                      <h4 className="text-white">Enterprise Elite</h4>
-                      <p className="text-white-50 small">Kecepatan & Desain Tanpa Batas</p>
-                      <div className="price mt-3">
+                      <h4 className="text-white">Custom Project</h4>
+                      <p className="text-white-50 small">Lets Discuss Your Unique Needs</p>
+                      {/* <div className="price mt-3">
                         <span className="currency text-accent">Rp</span>
                         <span className="amount h2 fw-bold text-white">2.999</span>
                         <span className="duration text-white-50">.000</span>
-                      </div>
+                      </div> */}
                     </div>
-                    <p className="text-white-50 small fw-bold mb-3">Semua fitur Business, plus:</p>
+                    {/* <p className="text-white-50 small fw-bold mb-3">Semua fitur Business, plus:</p>
                     <ul className="pricing-features list-unstyled text-white-50 mb-5">
                       <li><i className="fas fa-plus-circle text-accent me-2"></i> Desain Animasi Eksklusif</li>
                       <li><i className="fas fa-plus-circle text-accent me-2"></i> Optimasi Kecepatan Maksimal</li>
@@ -116,7 +114,7 @@ const Business = () => {
                       <li><i className="fas fa-plus-circle text-accent me-2"></i> Free Logo Design Basic</li>
                       <li><i className="fas fa-plus-circle text-accent me-2"></i> Prioritas Support 24/7</li>
                       <li><i className="fas fa-plus-circle text-accent me-2"></i> Garansi Maintenance 60 Hari</li>
-                    </ul>
+                    </ul> */}
                     <a href={getWaLink('Landing Page Ultimate')} className="btn btn-outline-accent w-100 fw-bold mt-auto" onClick={() => playClickSFX()}>Order Sekarang</a>
                   </div>
                 </div>
