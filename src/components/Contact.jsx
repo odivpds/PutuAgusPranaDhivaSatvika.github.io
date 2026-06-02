@@ -17,7 +17,7 @@ const Contact = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch("https://formsubmit.co/ajax/agusprana31@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/3e133d8a2f9dda6d1550734e0d0a3594", {
         method: "POST",
         headers: { 
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const Contact = () => {
                 </div>
               )}
 
-              <form action="https://formsubmit.co/agusprana31@gmail.com" method="POST" onSubmit={handleSubmit}>
+              <form action="https://formsubmit.co/3e133d8a2f9dda6d1550734e0d0a3594" method="POST" onSubmit={handleSubmit}>
                 <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio!" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
