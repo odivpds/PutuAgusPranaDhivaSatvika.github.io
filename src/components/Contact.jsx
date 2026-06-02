@@ -5,67 +5,98 @@ import { useAudio } from '../context/AudioContext';
 const Contact = () => {
   const { playClickSFX } = useAudio();
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     playClickSFX();
     setLoading(true);
 
     const form = e.target;
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(res => {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/agusprana31@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
       if (res.ok) {
-        alert('Pesan terkirim!');
+        setStatus({ type: 'success', message: 'Pesan terkirim!' }); 
         form.reset();
-      } else alert('Gagal mengirim.');
-    }).catch(() => {
-      alert('Terjadi kesalahan jaringan.');
-    }).finally(() => {
+      } else {
+        setStatus({ type: 'danger', message: 'Gagal mengirim. Verifikasi email dahulu.' });
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Terjadi kesalahan jaringan. Coba matikan Ad-blocker jika ada.');
+    } finally {
       setLoading(false);
-    });
+    }
   };
 
   return (
     <section id="contact" className="section-padding">
       <div className="container">
         <motion.div 
-          className="contact-box p-5 rounded-4"
+          className="contact-box p-5 rounded-4 shadow"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
           <div className="row align-items-center">
             <div className="col-lg-5 mb-4 mb-lg-0">
               <h2 className="text-white display-6 fw-bold">Mari Berkolaborasi</h2>
-              <p className="text-white">Punya ide proyek atau butuh bantuan dalam pengembangan web? Saya siap membantu.</p>
+              <p className="text-white-50">Punya ide proyek atau butuh bantuan pengembangan web? Saya siap membantu.</p>
+              
               <div className="mt-4">
-                <p className="text-white mb-2"><i className="fas fa-envelope text-accent me-2"></i> agusprana31@gmail.com</p>
-                <p className="text-white mb-2"><i className="fab fa-github text-accent me-2"></i> odivpds</p>
+                <div className="d-flex align-items-center mb-3">
+                  <div className="icon-circle me-3"><i className="fas fa-envelope text-accent"></i></div>
+                  <span className="text-white">agusprana31@gmail.com</span>
+                </div>
+                <div className="d-flex align-items-center mb-3">
+                  <div className="icon-circle me-3"><i className="fab fa-github text-accent"></i></div>
+                  <span className="text-white">odivpds</span>
+                </div>
               </div>
             </div>
+
             <div className="col-lg-7">
-              <form id="contactForm" action="https://formsubmit.co/agusprana31@gmail.com" method="POST" onSubmit={handleSubmit}>
+              {status && (
+                <div className={`alert alert-${status.type} border-0 animate__animated animate__fadeIn`}>
+                  {status.message}
+                </div>
+              )}
+
+              <form action="https://formsubmit.co/agusprana31@gmail.com" method="POST" onSubmit={handleSubmit}>
                 <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio!" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value={window.location.href} />
 
                 <div className="row g-3">
                   <div className="col-md-6">
-                    <input type="text" name="Full Name" className="form-control" placeholder="Nama Anda" required />
+                    <input type="text" name="name" className="form-control bg-dark text-white border-secondary" placeholder="Nama Anda" required />
                   </div>
                   <div className="col-md-6">
-                    <input type="email" name="Email Address" className="form-control" placeholder="Email Anda" required />
+                    <input type="email" name="email" className="form-control bg-dark text-white border-secondary" placeholder="Email Anda" required />
                   </div>
                   <div className="col-12">
-                    <textarea name="Message" className="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                    <textarea name="message" className="form-control bg-dark text-white border-secondary" rows="4" placeholder="Pesan Anda" required></textarea>
                   </div>
                   <div className="col-12">
-                    <button type="submit" id="submitBtn" className="btn btn-accent w-100 fw-bold py-3" disabled={loading}>
-                      {loading ? <i className="fas fa-spinner fa-spin"></i> : 'Kirim Sekarang'}
+                    <button type="submit" className="btn btn-accent w-100 fw-bold py-3 text-uppercase" disabled={loading}>
+                      {loading ? (
+                        <><span className="spinner-border spinner-border-sm me-2"></span> Mengirim...</>
+                      ) : (
+                        'Kirim Sekarang'
+                      )}
                     </button>
                   </div>
                 </div>
