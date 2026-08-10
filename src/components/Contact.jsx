@@ -44,32 +44,37 @@ const Contact = () => {
     <section id="contact" className="section-padding">
       <div className="container">
         <motion.div 
-          className="contact-box p-5 rounded-4 shadow"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          className="contact-box p-5 rounded-4"
+          style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)' }}
+          initial={{ opacity: 0, y: 150, scale: 0.8 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <div className="row align-items-center">
             <div className="col-lg-5 mb-4 mb-lg-0">
-              <h2 className="text-white display-6 fw-bold">Mari Berkolaborasi</h2>
-              <p className="text-white-50">Punya ide proyek atau butuh bantuan pengembangan web? Saya siap membantu.</p>
+              <h2 className="text-nb-dark display-6 fw-bold">Mari Berkolaborasi</h2>
+              <p className="text-nb-muted fw-500">Punya ide proyek atau butuh bantuan pengembangan web? Saya siap membantu.</p>
               
               <div className="mt-4">
                 <div className="d-flex align-items-center mb-3">
-                  <div className="icon-circle me-3"><i className="fas fa-envelope text-accent"></i></div>
-                  <span className="text-white">agusprana31@gmail.com</span>
+                  <motion.div whileHover={{ scale: 1.2, rotate: 15, y: -5, boxShadow: '4px 4px 0px var(--nb-dark)' }} className="icon-circle me-3" style={{ background: 'var(--nb-yellow)', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: 'var(--nb-border-sm)', cursor: 'pointer' }}>
+                    <i className="fas fa-envelope text-nb-dark"></i>
+                  </motion.div>
+                  <span className="text-nb-dark fw-bold">agusprana31@gmail.com</span>
                 </div>
                 <div className="d-flex align-items-center mb-3">
-                  <div className="icon-circle me-3"><i className="fab fa-github text-accent"></i></div>
-                  <span className="text-white">odivpds</span>
+                  <motion.div whileHover={{ scale: 1.2, rotate: -15, y: -5, boxShadow: '4px 4px 0px var(--nb-dark)' }} className="icon-circle me-3" style={{ background: 'var(--nb-cyan)', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: 'var(--nb-border-sm)', cursor: 'pointer' }}>
+                    <i className="fab fa-github text-nb-dark"></i>
+                  </motion.div>
+                  <span className="text-nb-dark fw-bold">odivpds</span>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-7">
               {status && (
-                <div className={`alert alert-${status.type} border-0 animate__animated animate__fadeIn`}>
+                <div className={`alert alert-${status.type} border-0 animate__animated animate__fadeIn fw-bold`} style={{ border: 'var(--nb-border-sm)' }}>
                   {status.message}
                 </div>
               )}
@@ -82,22 +87,22 @@ const Contact = () => {
 
                 <div className="row g-3">
                   <div className="col-md-6">
-                    <input type="text" name="name" className="form-control bg-dark text-white border-secondary" placeholder="Nama Anda" required />
+                    <motion.input type="text" name="name" className="form-control" placeholder="Nama Anda" required whileFocus={{ scale: 1.02, x: -5, y: -5, boxShadow: '6px 6px 0px var(--nb-dark)' }} transition={{ type: 'spring', stiffness: 400 }} />
                   </div>
                   <div className="col-md-6">
-                    <input type="email" name="email" className="form-control bg-dark text-white border-secondary" placeholder="Email Anda" required />
+                    <motion.input type="email" name="email" className="form-control" placeholder="Email Anda" required whileFocus={{ scale: 1.02, x: -5, y: -5, boxShadow: '6px 6px 0px var(--nb-dark)' }} transition={{ type: 'spring', stiffness: 400 }} />
                   </div>
                   <div className="col-12">
-                    <textarea name="message" className="form-control bg-dark text-white border-secondary" rows="4" placeholder="Pesan Anda" required></textarea>
+                    <motion.textarea name="message" className="form-control" rows="4" placeholder="Pesan Anda" required whileFocus={{ scale: 1.02, x: -5, y: -5, boxShadow: '6px 6px 0px var(--nb-dark)' }} transition={{ type: 'spring', stiffness: 400 }}></motion.textarea>
                   </div>
-                  <div className="col-12">
-                    <button type="submit" className="btn btn-accent w-100 fw-bold py-3 text-uppercase" disabled={loading}>
+                  <div className="col-12 mt-4">
+                    <motion.button type="submit" className="btn btn-accent w-100 fw-bold py-3 text-uppercase" disabled={loading} whileHover={{ scale: 1.02, rotate: -1, boxShadow: '8px 8px 0px var(--nb-dark)' }} whileTap={{ scale: 0.95, rotate: 1 }}>
                       {loading ? (
-                        <><span className="spinner-border spinner-border-sm me-2"></span> Mengirim...</>
+                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                       ) : (
-                        'Kirim Sekarang'
+                        <>Kirim Pesan <i className="fas fa-paper-plane ms-2"></i></>
                       )}
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               </form>
