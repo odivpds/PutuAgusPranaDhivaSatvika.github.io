@@ -11,6 +11,7 @@ const Lottie = LottieModule.default || LottieModule;
 
 import computerAnimation from './context/computer.json';
 import starAnimation from './context/star.json';
+import swooshSfx from './assets/universfield-swoosh-010-352856.mp3';
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
@@ -58,6 +59,10 @@ const AppContent = () => {
       // Tunggu pintu naik (0.8s) + Teks muncul (0.5s) + Baca (0.8s)
       timer = setTimeout(() => {
         setSplashStep(2);
+        // Mainkan SFX swoosh saat pintu mulai terbuka
+        const swoosh = new Audio(swooshSfx);
+        swoosh.volume = 0.6;
+        swoosh.play().catch(e => console.log('Swoosh SFX play failed', e));
       }, 2100);
     } else if (splashStep === 2) {
       // Tunggu pintu terbuka (1s)
@@ -116,7 +121,7 @@ const AppContent = () => {
               initial={{ opacity: 0, scale: 0, rotate: -45 }}
               animate={{ opacity: 1, scale: 1, rotate: 10 }}
               transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-              style={{ position: 'absolute', top: '15%', left: '15%', width: '150px' }}
+              style={{ position: 'absolute', top: 'clamp(3%, 10vw, 15%)', left: 'clamp(3%, 10vw, 15%)', width: 'clamp(90px, 15vw, 150px)' }}
             >
               <Lottie animationData={starAnimation} loop={true} />
             </motion.div>
@@ -125,7 +130,7 @@ const AppContent = () => {
               initial={{ opacity: 0, scale: 0, rotate: 45 }}
               animate={{ opacity: 1, scale: 1, rotate: -10 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-              style={{ position: 'absolute', bottom: '15%', right: '15%', width: '180px' }}
+              style={{ position: 'absolute', bottom: 'clamp(3%, 10vw, 15%)', right: 'clamp(3%, 10vw, 15%)', width: 'clamp(110px, 18vw, 180px)' }}
             >
               <Lottie animationData={computerAnimation} loop={true} />
             </motion.div>
@@ -134,23 +139,26 @@ const AppContent = () => {
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: -3 }}
               transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.2 }}
+              className="p-4 p-md-5"
               style={{
                 background: '#ffffff',
                 border: 'var(--nb-border)',
                 boxShadow: 'var(--nb-shadow-lg)',
-                padding: '2rem 4rem',
                 textAlign: 'center',
-                marginBottom: '3rem'
+                marginBottom: 'clamp(1.5rem, 5vw, 3rem)',
+                maxWidth: '90vw',
+                position: 'relative',
+                zIndex: 2
               }}
             >
-              <h1 className="display-4 fw-bold text-nb-dark mb-0" style={{ textTransform: 'uppercase', letterSpacing: '2px' }}>Agus Prana</h1>
-              <p className="text-nb-dark fw-bold mt-2 mb-0" style={{ fontSize: '1.2rem' }}>PORTFOLIO EXPERIENCE</p>
+              <h1 className="fw-bold text-nb-dark mb-0" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', textTransform: 'uppercase', letterSpacing: '2px' }}>Agus Prana</h1>
+              <p className="text-nb-dark fw-bold mt-2 mb-0" style={{ fontSize: 'clamp(0.9rem, 3vw, 1.2rem)' }}>PORTFOLIO EXPERIENCE</p>
             </motion.div>
             
             <motion.button 
               id="start-btn"
-              className="btn btn-accent px-5 py-3 fw-bold"
-              style={{ fontSize: '1.2rem', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '8px' }}
+              className="btn btn-accent px-4 px-md-5 py-3 fw-bold"
+              style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '8px', zIndex: 2, position: 'relative' }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, type: "spring", stiffness: 200 }}

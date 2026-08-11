@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 import certToeic from '../context/image copy 2.png';
 import certIc3 from '../context/image copy.png';
@@ -7,10 +7,18 @@ import certDb from '../context/image.png';
 import certJinom from '../context/WhatsApp Image 2026-08-11 at 14.56.07.jpeg';
 
 import confetti from 'canvas-confetti';
-import Swal from 'sweetalert2';
 
 const About = () => {
   const ref = useRef(null);
+  const [showDownloadAlert, setShowDownloadAlert] = useState(false);
+
+  useEffect(() => {
+    if (showDownloadAlert) {
+      const timer = setTimeout(() => setShowDownloadAlert(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [showDownloadAlert]);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -36,6 +44,44 @@ const About = () => {
 
   return (
     <>
+      <AnimatePresence>
+        {showDownloadAlert && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.2, x: "-50%", y: "-50%", rotate: -20 }}
+            animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%", rotate: [-10, 5, -5, 0] }}
+            exit={{ opacity: 0, scale: 2, x: "-50%", y: "-50%", filter: "blur(10px)" }}
+            transition={{ type: 'spring', stiffness: 200, damping: 10, mass: 1.5 }}
+            style={{
+              position: 'fixed',
+              top: '50%',
+              left: '50%',
+              zIndex: 9999,
+              textAlign: 'center',
+              pointerEvents: 'none',
+              width: '100vw'
+            }}
+          >
+            <h1 className="fw-black text-uppercase m-0" style={{ 
+              fontSize: 'clamp(4rem, 10vw, 8rem)', 
+              color: 'var(--nb-yellow)', 
+              WebkitTextStroke: '4px var(--nb-dark)', 
+              textShadow: '8px 8px 0px var(--nb-dark)',
+              lineHeight: 1
+            }}>
+              THANK YOUU
+            </h1>
+            <h2 className="fw-bold text-uppercase mt-2" style={{
+              fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+              color: 'var(--nb-cyan)',
+              WebkitTextStroke: '2px var(--nb-dark)',
+              textShadow: '4px 4px 0px var(--nb-dark)'
+            }}>
+              🎉 You're Awesome! 🎉
+            </h2>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <section id="about" className="py-5 bg-darker" style={{ borderTop: 'var(--nb-border)', borderBottom: 'var(--nb-border)' }}>
         <div className="container">
           <motion.div
@@ -173,39 +219,22 @@ const About = () => {
                 </motion.div>
               </a>
 
-              {/* Tombol Download CV - Versi Desktop (Sembunyi di Mobile) */}
               <motion.div variants={itemVariants} className="mt-5 pt-3 d-none d-lg-block">
                 <motion.a
-                  href="/src/context/Putu_Agus_Prana_Dhiva_Satvika_Resume.png"
+                  href="/src/context/Resume - Putu Agus Prana Dhiva Satvika.pdf"
                   download
                   className="btn-nb-primary d-inline-flex align-items-center gap-2 fw-bold"
                   style={{ padding: '0.8rem 1.5rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: 'var(--nb-dark)', borderRadius: '8px', display: 'inline-block' }}
                   whileHover={{ scale: 1.05, rotate: -3, y: -5, boxShadow: '8px 8px 0px var(--nb-dark)' }}
                   whileTap={{ scale: 0.95, rotate: 0, y: 0, boxShadow: '2px 2px 0px var(--nb-dark)' }}
                   onClick={() => {
-                    // Trigger confetti
                     confetti({
                       particleCount: 150,
                       spread: 70,
                       origin: { y: 0.6 },
                       colors: ['#ffde59', '#ff914d', '#ff5757', '#5ce1e6', '#000000']
                     });
-
-                    // Show appreciation popup
-                    Swal.fire({
-                      title: 'WOOHOO! 🎉',
-                      html: '<p class="fw-bold mb-0">Terima kasih banyak telah mengunduh resume saya!</p><p class="small text-muted mt-2">Saya sangat mengapresiasi waktu dan ketertarikan Anda. Semoga kita bisa berkolaborasi!</p>',
-                      icon: 'success',
-                      confirmButtonText: 'Sama-sama! 👍',
-                      customClass: {
-                        popup: 'nb-alert-popup',
-                        confirmButton: 'btn btn-nb-primary fw-bold px-4 py-2 mt-3',
-                        title: 'text-nb-dark fw-bold',
-                      },
-                      buttonsStyling: false,
-                      background: '#fff',
-                      color: 'var(--nb-dark)'
-                    });
+                    setShowDownloadAlert(true);
                   }}
                 >
                   <i className="fa-solid fa-file-arrow-down fa-lg"></i>
@@ -331,7 +360,6 @@ const About = () => {
                 </ul>
               </motion.div>
 
-              {/* Tombol Download CV - Versi Mobile (Muncul setelah pengalaman) */}
               <motion.div variants={itemVariants} className="mt-5 pt-3 text-center d-block d-lg-none">
                 <motion.a
                   href="/src/context/Putu_Agus_Prana_Dhiva_Satvika_Resume.png"
@@ -347,20 +375,7 @@ const About = () => {
                       origin: { y: 0.6 },
                       colors: ['#ffde59', '#ff914d', '#ff5757', '#5ce1e6', '#000000']
                     });
-                    Swal.fire({
-                      title: 'WOOHOO! 🎉',
-                      html: '<p class="fw-bold mb-0">Terima kasih banyak telah mengunduh resume saya!</p><p class="small text-muted mt-2">Saya sangat mengapresiasi waktu dan ketertarikan Anda. Semoga kita bisa berkolaborasi!</p>',
-                      icon: 'success',
-                      confirmButtonText: 'Sama-sama! 👍',
-                      customClass: {
-                        popup: 'nb-alert-popup',
-                        confirmButton: 'btn btn-nb-primary fw-bold px-4 py-2 mt-3',
-                        title: 'text-nb-dark fw-bold',
-                      },
-                      buttonsStyling: false,
-                      background: '#fff',
-                      color: 'var(--nb-dark)'
-                    });
+                    setShowDownloadAlert(true);
                   }}
                 >
                   <i className="fa-solid fa-file-arrow-down fa-lg"></i>
