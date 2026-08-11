@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useAudio } from '../context/AudioContext';
 
 const Contact = () => {
   const { playClickSFX } = useAudio();
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); 
+  const [status, setStatus] = useState(null);
+
+  // Efek untuk menghilangkan alert secara otomatis setelah beberapa detik
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => {
+        setStatus(null);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +29,7 @@ const Contact = () => {
     try {
       const res = await fetch("https://formsubmit.co/ajax/3e133d8a2f9dda6d1550734e0d0a3594", {
         method: "POST",
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
@@ -27,7 +37,7 @@ const Contact = () => {
       });
 
       if (res.ok) {
-        setStatus({ type: 'success', message: 'Pesan terkirim!' }); 
+        setStatus({ type: 'success', message: 'Pesan terkirim!' });
         form.reset();
       } else {
         setStatus({ type: 'danger', message: 'Gagal mengirim. Verifikasi email dahulu.' });
@@ -43,7 +53,7 @@ const Contact = () => {
   return (
     <section id="contact" className="section-padding">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="contact-box p-5 rounded-4"
           style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)' }}
           initial={{ opacity: 0, y: 150, scale: 0.8 }}
@@ -55,7 +65,7 @@ const Contact = () => {
             <div className="col-lg-5 mb-4 mb-lg-0">
               <h2 className="text-nb-dark display-6 fw-bold">Mari Berkolaborasi</h2>
               <p className="text-nb-muted fw-500">Punya ide proyek atau butuh bantuan pengembangan web? Saya siap membantu.</p>
-              
+
               <div className="mt-4">
                 <div className="d-flex align-items-center mb-3">
                   <motion.div whileHover={{ scale: 1.2, rotate: 15, y: -5, boxShadow: '4px 4px 0px var(--nb-dark)' }} className="icon-circle me-3" style={{ background: 'var(--nb-yellow)', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: 'var(--nb-border-sm)', cursor: 'pointer' }}>
@@ -73,11 +83,20 @@ const Contact = () => {
             </div>
 
             <div className="col-lg-7">
-              {status && (
-                <div className={`alert alert-${status.type} border-0 animate__animated animate__fadeIn fw-bold`} style={{ border: 'var(--nb-border-sm)' }}>
-                  {status.message}
-                </div>
-              )}
+              <AnimatePresence>
+                {status && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -30, scale: 0.8, rotate: -3 }}
+                    animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+                    exit={{ opacity: 0, x: 200, scale: 0.5, rotate: 15 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    className={`alert alert-${status.type} border-0 fw-bold`} 
+                    style={{ border: 'var(--nb-border-sm)', boxShadow: '6px 6px 0px var(--nb-dark)' }}
+                  >
+                    {status.message}
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               <form action="https://formsubmit.co/3e133d8a2f9dda6d1550734e0d0a3594" method="POST" onSubmit={handleSubmit}>
                 <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio!" />
@@ -96,7 +115,7 @@ const Contact = () => {
                     <motion.textarea name="message" className="form-control" rows="4" placeholder="Pesan Anda" required whileFocus={{ scale: 1.02, x: -5, y: -5, boxShadow: '6px 6px 0px var(--nb-dark)' }} transition={{ type: 'spring', stiffness: 400 }}></motion.textarea>
                   </div>
                   <div className="col-12 mt-4">
-                    <motion.button type="submit" className="btn btn-accent w-100 fw-bold py-3 text-uppercase" disabled={loading} whileHover={{ scale: 1.02, rotate: -1, boxShadow: '8px 8px 0px var(--nb-dark)' }} whileTap={{ scale: 0.95, rotate: 1 }}>
+                    <motion.button type="submit" className="btn btn-accent w-100 fw-bold py-3 text-uppercase" disabled={loading} whileHover={{ x: 2, y: 2, boxShadow: '2px 2px 0px var(--nb-dark)' }} whileTap={{ scale: 0.98, x: 4, y: 4, boxShadow: '0px 0px 0px var(--nb-dark)' }}>
                       {loading ? (
                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                       ) : (

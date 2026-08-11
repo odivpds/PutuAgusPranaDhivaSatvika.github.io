@@ -9,13 +9,13 @@
   --nb-cyan: #00E5FF;
   --nb-text: #1a1a2e;
   --nb-text-muted: #5a5a72;
-  
+
   --nb-border: 3px solid #1a1a2e;
   --nb-border-sm: 2px solid #1a1a2e;
   --nb-shadow: 4px 4px 0px #1a1a2e;
   --nb-shadow-lg: 8px 8px 0px #1a1a2e;
   --nb-shadow-hover: 2px 2px 0px #1a1a2e;
-  
+
   --primary: var(--nb-bg);
   --secondary: var(--nb-surface);
   --accent: var(--nb-accent);
@@ -28,9 +28,11 @@
 .text-accent {
   color: var(--accent) !important;
 }
+
 .text-nb-dark {
   color: var(--nb-dark) !important;
 }
+
 .text-nb-muted {
   color: var(--nb-text-muted) !important;
 }
@@ -49,8 +51,16 @@ body {
 }
 
 /* Font Palette */
-h1, h2, h3, h4, h5, h6, 
-.display-3, .display-4, .display-5, .display-6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-3,
+.display-4,
+.display-5,
+.display-6,
 .section-title {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
@@ -110,7 +120,9 @@ ul.text-nb-dark.small {
   border-radius: 4px;
 }
 
-.nav-link:hover, .nav-link:focus, .nav-item.active .nav-link {
+.nav-link:hover,
+.nav-link:focus,
+.nav-item.active .nav-link {
   background-color: var(--nb-yellow);
   color: var(--nb-dark) !important;
   border: 2px solid var(--nb-dark);
@@ -188,7 +200,8 @@ ul.text-nb-dark.small {
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  padding: 30px 0; /* Added padding to prevent clipping of bouncing items */
+  padding: 30px 0;
+  /* Added padding to prevent clipping of bouncing items */
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
@@ -409,7 +422,7 @@ ul.text-nb-dark.small {
 }
 
 .btn-outline-accent:hover {
-  background: var(--nb-pink);
+  border: var(--nb-border);
   color: var(--nb-dark);
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px #1a1a2e;
@@ -617,7 +630,8 @@ ul.text-nb-dark.small {
 }
 
 .btn-accent:hover {
-  background: var(--nb-yellow);
+  background: var(--nb-accent);
+  border: var(--nb-border);
   color: #1a1a2e;
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px #1a1a2e;

@@ -122,7 +122,7 @@ const About = () => {
               </motion.h4>
 
               <a href={certJinom} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-cyan)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">Web Developer Internship</h6>
@@ -135,7 +135,7 @@ const About = () => {
               </a>
 
               <a href={certDb} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-cyan)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">IT Specialist - Databases</h6>
@@ -148,7 +148,7 @@ const About = () => {
               </a>
 
               <a href={certIc3} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-cyan)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">IC3 GS6 LEVEL 1</h6>
@@ -161,7 +161,7 @@ const About = () => {
               </a>
 
               <a href={certToeic} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-cyan)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">TOEIC Listening and Reading (Score: 550)</h6>
@@ -173,7 +173,8 @@ const About = () => {
                 </motion.div>
               </a>
 
-              <motion.div variants={itemVariants} className="mt-5 pt-3">
+              {/* Tombol Download CV - Versi Desktop (Sembunyi di Mobile) */}
+              <motion.div variants={itemVariants} className="mt-5 pt-3 d-none d-lg-block">
                 <motion.a
                   href="/src/context/Putu_Agus_Prana_Dhiva_Satvika_Resume.png"
                   download
@@ -328,6 +329,43 @@ const About = () => {
                   <li className="mb-2">Merancang web scraping untuk mengumpulkan ratusan data Point of Interest (POI) mitra/reseller dari Google Maps.</li>
                   <li>Mengelola infrastruktur lokal, troubleshooting jaringan Docker, dan resolusi isu integrasi kode (merge conflict).</li>
                 </ul>
+              </motion.div>
+
+              {/* Tombol Download CV - Versi Mobile (Muncul setelah pengalaman) */}
+              <motion.div variants={itemVariants} className="mt-5 pt-3 text-center d-block d-lg-none">
+                <motion.a
+                  href="/src/context/Putu_Agus_Prana_Dhiva_Satvika_Resume.png"
+                  download
+                  className="btn-nb-primary d-inline-flex align-items-center gap-2 fw-bold w-100 justify-content-center"
+                  style={{ padding: '1rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: 'var(--nb-dark)', borderRadius: '8px' }}
+                  whileHover={{ scale: 1.02, y: -2, boxShadow: '6px 6px 0px var(--nb-dark)' }}
+                  whileTap={{ scale: 0.98, y: 2, boxShadow: '2px 2px 0px var(--nb-dark)' }}
+                  onClick={() => {
+                    confetti({
+                      particleCount: 150,
+                      spread: 70,
+                      origin: { y: 0.6 },
+                      colors: ['#ffde59', '#ff914d', '#ff5757', '#5ce1e6', '#000000']
+                    });
+                    Swal.fire({
+                      title: 'WOOHOO! 🎉',
+                      html: '<p class="fw-bold mb-0">Terima kasih banyak telah mengunduh resume saya!</p><p class="small text-muted mt-2">Saya sangat mengapresiasi waktu dan ketertarikan Anda. Semoga kita bisa berkolaborasi!</p>',
+                      icon: 'success',
+                      confirmButtonText: 'Sama-sama! 👍',
+                      customClass: {
+                        popup: 'nb-alert-popup',
+                        confirmButton: 'btn btn-nb-primary fw-bold px-4 py-2 mt-3',
+                        title: 'text-nb-dark fw-bold',
+                      },
+                      buttonsStyling: false,
+                      background: '#fff',
+                      color: 'var(--nb-dark)'
+                    });
+                  }}
+                >
+                  <i className="fa-solid fa-file-arrow-down fa-lg"></i>
+                  Download Resume / CV
+                </motion.a>
               </motion.div>
             </div>
           </div>
