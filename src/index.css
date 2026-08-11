@@ -1359,6 +1359,201 @@ ul.text-white {
   .site-footer {
     padding: 40px 0 0;
   }
+  letter-spacing: -1px;
+  transition: opacity 0.3s ease;
+}
+
+.footer-logo:hover {
+  opacity: 0.85;
+  color: var(--text-primary);
+}
+
+.footer-dot {
+  color: var(--cyan);
+  font-size: 2rem;
+  line-height: 0;
+}
+
+.footer-tagline {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: var(--nb-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nb-dark);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px 0px #1a1a2e;
+}
+
+.footer-socials a:hover {
+  background: var(--nb-pink);
+  color: var(--nb-dark);
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.footer-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--nb-dark) !important;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background: var(--nb-dark);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+}
+
+.footer-links a:hover {
+  color: var(--accent-glow);
+  padding-left: 6px;
+}
+
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-contact i {
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.footer-contact a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: var(--accent-glow);
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding: 24px 0;
+  border-top: 1px solid var(--card-border);
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-copyright,
+.footer-credit {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.footer-heart {
+  color: #ef4444;
+  animation: heartbeat 1.5s ease infinite;
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.25);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.15);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+}
+
+/* Footer Responsive */
+@media (max-width: 991.98px) {
+  .site-footer {
+    padding: 50px 0 0;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .site-footer {
+    padding: 40px 0 0;
+  }
 
   .footer-logo {
     font-size: 1.4rem;
@@ -1367,4 +1562,32 @@ ul.text-white {
   .footer-socials {
     justify-content: flex-start;
   }
+}
+
+/* ===== SWEETALERT NEOBRUTALISM ===== */
+.nb-alert-popup {
+  border: 4px solid var(--nb-dark) !important;
+  border-radius: 8px !important;
+  box-shadow: 12px 12px 0px var(--nb-dark) !important;
+  padding: 2rem !important;
+}
+
+.swal2-actions .btn-nb-primary {
+  border: 3px solid var(--nb-dark) !important;
+  box-shadow: 6px 6px 0px var(--nb-dark) !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  background-color: var(--nb-accent) !important;
+  color: var(--nb-dark) !important;
+  transition: all 0.2s ease !important;
+}
+
+.swal2-actions .btn-nb-primary:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 8px 8px 0px var(--nb-dark) !important;
+}
+
+.swal2-actions .btn-nb-primary:active {
+  transform: translate(4px, 4px) !important;
+  box-shadow: 2px 2px 0px var(--nb-dark) !important;
 }

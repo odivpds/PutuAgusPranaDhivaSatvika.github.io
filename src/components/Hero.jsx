@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     <header id="home" className="hero-section" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', backgroundColor: 'var(--nb-bg)' }}>
       <div className="container h-100 position-relative pt-5 pt-lg-0" style={{ zIndex: 10 }}>
-        <div className="row h-100 align-items-center flex-column-reverse flex-lg-row text-center text-lg-start mt-5 mt-lg-0">
+        <div className="row h-100 align-items-center flex-column-reverse flex-lg-row text-center text-lg-start mt-0 mt-lg-0">
           <motion.div
             className="col-lg-7 content-column mb-5 mb-lg-0"
           >
@@ -46,7 +46,7 @@ const Hero = () => {
 
           <motion.div
             className="col-lg-5"
-            style={{ 
+            style={{
               y: isMobile ? 0 : yImage,
               x: isMobile ? xImage : 0
             }}
