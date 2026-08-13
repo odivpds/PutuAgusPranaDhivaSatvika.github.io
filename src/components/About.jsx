@@ -5,6 +5,7 @@ import certToeic from '../context/image copy 2.png';
 import certIc3 from '../context/image copy.png';
 import certDb from '../context/image.png';
 import certJinom from '../context/WhatsApp Image 2026-08-11 at 14.56.07.jpeg';
+import resumeFile from '../context/Resume - Putu Agus Prana Dhiva Satvika.pdf';
 
 import confetti from 'canvas-confetti';
 
@@ -219,10 +220,11 @@ const About = () => {
                 </motion.div>
               </a>
 
+              {/* Tombol Download CV - Versi Desktop (Sembunyi di Mobile) */}
               <motion.div variants={itemVariants} className="mt-5 pt-3 d-none d-lg-block">
                 <motion.a
-                  href="/src/context/Resume - Putu Agus Prana Dhiva Satvika.pdf"
-                  download
+                  href={resumeFile}
+                  download="Resume - Putu Agus Prana Dhiva Satvika.pdf"
                   className="btn-nb-primary d-inline-flex align-items-center gap-2 fw-bold"
                   style={{ padding: '0.8rem 1.5rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: 'var(--nb-dark)', borderRadius: '8px', display: 'inline-block' }}
                   whileHover={{ scale: 1.05, rotate: -3, y: -5, boxShadow: '8px 8px 0px var(--nb-dark)' }}
@@ -360,10 +362,11 @@ const About = () => {
                 </ul>
               </motion.div>
 
+              {/* Tombol Download CV - Versi Mobile (Muncul setelah pengalaman) */}
               <motion.div variants={itemVariants} className="mt-5 pt-3 text-center d-block d-lg-none">
                 <motion.a
-                  href="/src/context/Putu_Agus_Prana_Dhiva_Satvika_Resume.png"
-                  download
+                  href={resumeFile}
+                  download="Resume - Putu Agus Prana Dhiva Satvika.pdf"
                   className="btn-nb-primary d-inline-flex align-items-center gap-2 fw-bold w-100 justify-content-center"
                   style={{ padding: '1rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: 'var(--nb-dark)', borderRadius: '8px' }}
                   whileHover={{ scale: 1.02, y: -2, boxShadow: '6px 6px 0px var(--nb-dark)' }}
