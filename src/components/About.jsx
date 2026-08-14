@@ -5,7 +5,7 @@ import certToeic from '../context/image copy 2.png';
 import certIc3 from '../context/image copy.png';
 import certDb from '../context/image.png';
 import certJinom from '../context/WhatsApp Image 2026-08-11 at 14.56.07.jpeg';
-import resumeFile from '../context/Resume - Putu Agus Prana Dhiva Satvika.pdf';
+import resumeFile from '../context/Resume-PutuAgusPranaDhivaSatvika.pdf';
 
 import confetti from 'canvas-confetti';
 
