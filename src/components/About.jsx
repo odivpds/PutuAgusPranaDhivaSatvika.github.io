@@ -62,10 +62,10 @@ const About = () => {
               width: '100vw'
             }}
           >
-            <h1 className="fw-black text-uppercase m-0" style={{ 
-              fontSize: 'clamp(4rem, 10vw, 8rem)', 
-              color: 'var(--nb-yellow)', 
-              WebkitTextStroke: '4px var(--nb-dark)', 
+            <h1 className="fw-black text-uppercase m-0" style={{
+              fontSize: 'clamp(4rem, 10vw, 8rem)',
+              color: 'var(--nb-yellow)',
+              WebkitTextStroke: '4px var(--nb-dark)',
               textShadow: '8px 8px 0px var(--nb-dark)',
               lineHeight: 1
             }}>
@@ -366,7 +366,7 @@ const About = () => {
               <motion.div variants={itemVariants} className="mt-5 pt-3 text-center d-block d-lg-none">
                 <motion.a
                   href={resumeFile}
-                  download="Resume - Putu Agus Prana Dhiva Satvika.pdf"
+                  download="Resume-PutuAgusPranaDhivaSatvika.pdf.pdf"
                   className="btn-nb-primary d-inline-flex align-items-center gap-2 fw-bold w-100 justify-content-center"
                   style={{ padding: '1rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: 'var(--nb-dark)', borderRadius: '8px' }}
                   whileHover={{ scale: 1.02, y: -2, boxShadow: '6px 6px 0px var(--nb-dark)' }}
