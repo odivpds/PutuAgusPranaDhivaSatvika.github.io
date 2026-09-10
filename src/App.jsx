@@ -141,7 +141,7 @@ const AppContent = () => {
               transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.2 }}
               className="p-4 p-md-5"
               style={{
-                background: '#ffffff',
+                background: 'var(--nb-surface)',
                 border: 'var(--nb-border)',
                 boxShadow: 'var(--nb-shadow-lg)',
                 textAlign: 'center',
@@ -194,7 +194,7 @@ const AppContent = () => {
               style={{
                 width: '50vw',
                 height: '100vh',
-                backgroundColor: 'var(--nb-dark)'
+                backgroundColor: 'var(--nb-surface)'
               }}
             />
             {/* Right Door */}
@@ -209,7 +209,7 @@ const AppContent = () => {
               style={{
                 width: '50vw',
                 height: '100vh',
-                backgroundColor: 'var(--nb-dark)'
+                backgroundColor: 'var(--nb-surface)'
               }}
             />
             {/* WELCOME Text */}

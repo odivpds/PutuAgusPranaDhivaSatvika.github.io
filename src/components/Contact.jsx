@@ -55,7 +55,7 @@ const Contact = () => {
       <div className="container">
         <motion.div
           className="contact-box p-5 rounded-4"
-          style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)' }}
+          style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)' }}
           initial={{ opacity: 0, y: 150, scale: 0.8 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-50px" }}

@@ -39,7 +39,7 @@ const Hero = () => {
               <p className="lead text-nb-muted mb-5 px-2 px-lg-0" style={{ fontWeight: 500 }}>Halo, saya Agus Prana. Berfokus pada pengembangan web menggunakan Laravel, ReactJS, dan NodeJS. Berkomitmen untuk menciptakan kode yang bersih dan fungsional.</p>
               <div className="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
                 <a href="#projects" className="btn btn-accent px-4 py-3 fw-bold w-sm-100">Lihat Project</a>
-                <a href="#contact" className="btn btn-outline-accent px-4 py-3 fw-bold bg-white w-sm-100">Hubungi Saya</a>
+                <a href="#contact" className="btn btn-outline-accent px-4 py-3 fw-bold w-sm-100" style={{ background: 'var(--nb-surface)' }}>Hubungi Saya</a>
               </div>
             </motion.div>
           </motion.div>
@@ -73,7 +73,7 @@ const Hero = () => {
                   transform: 'translateX(-50%) rotate(-5deg)',
                   width: '100px',
                   height: '35px',
-                  background: 'rgba(255,255,255,0.8)',
+                  background: 'var(--nb-surface)',
                   border: 'var(--nb-border-sm)',
                   boxShadow: 'var(--nb-shadow)',
                   zIndex: 2
@@ -86,7 +86,7 @@ const Hero = () => {
                   borderRadius: '0',
                   overflow: 'hidden',
                   aspectRatio: '1',
-                  background: '#fff',
+                  background: 'var(--nb-surface)',
                   padding: '15px 15px 40px 15px',
                   position: 'relative'
                 }}>

@@ -155,7 +155,7 @@ const About = () => {
               <motion.h4 variants={itemVariants} className="text-nb-dark mb-4 mt-5">Tools & Workflow</motion.h4>
               <motion.div variants={itemVariants} className="d-flex flex-wrap gap-2 mb-4">
                 {['Git & GitHub', 'Docker', 'Postman', 'Figma', 'Linux / Ubuntu', 'SQLite', 'Trello'].map(tool => (
-                  <span key={tool} className="badge bg-white text-nb-dark" style={{ border: 'var(--nb-border)', boxShadow: '2px 2px 0px var(--nb-dark)', fontSize: '0.85rem', padding: '0.5rem 0.8rem' }}>
+                  <span key={tool} className="badge text-nb-dark" style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: '2px 2px 0px var(--nb-border-color)', fontSize: '0.85rem', padding: '0.5rem 0.8rem' }}>
                     {tool}
                   </span>
                 ))}
@@ -262,7 +262,7 @@ const About = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ scale: 1.05, rotate: 2, y: -10, boxShadow: '8px 8px 0px var(--nb-dark)' }}
                 className="experience-card p-4 mb-4"
-                style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
+                style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">Game Developer Intern</h5>
@@ -282,7 +282,7 @@ const About = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ scale: 1.05, rotate: -2, y: -10, boxShadow: '8px 8px 0px var(--nb-dark)' }}
                 className="experience-card p-4 mb-4"
-                style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
+                style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">Full Stack Web Developer</h5>
@@ -300,7 +300,7 @@ const About = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ scale: 1.05, rotate: -1, y: -10, boxShadow: '8px 8px 0px var(--nb-dark)' }}
                 className="experience-card p-4 mb-4"
-                style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
+                style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">AI Chatbots Integration Intern</h5>
@@ -324,7 +324,7 @@ const About = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ scale: 1.05, rotate: 1, y: -10, boxShadow: '8px 8px 0px var(--nb-dark)' }}
                 className="experience-card p-4 mb-4"
-                style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
+                style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">HRIS Developer Intern</h5>
@@ -346,7 +346,7 @@ const About = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ scale: 1.05, rotate: -1, y: -10, boxShadow: '8px 8px 0px var(--nb-dark)' }}
                 className="experience-card p-4 mb-4"
-                style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
+                style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', transition: 'box-shadow 0.2s', cursor: 'pointer' }}
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">Full-Stack Web Developer Intern</h5>

@@ -49,7 +49,7 @@ const Business = () => {
               >
                 {/* Starter Plan */}
                 <div className="col-lg-4 col-md-6">
-                  <div className="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column" style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '12px' }}>
+                  <div className="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column" style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '12px' }}>
                     <div className="pricing-header mb-4">
                       <h4 className="text-nb-dark fw-bold">Launch</h4>
                       <p className="text-nb-muted small fw-500">Cocok untuk bisnis kecil yang ingin mulai tampil profesional di internet.</p>
@@ -73,7 +73,7 @@ const Business = () => {
 
                 {/* Business Authority */}
                 <div className="col-lg-4 col-md-6">
-                  <div className="pricing-card featured p-4 h-100 d-flex flex-column" style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '12px', position: 'relative', transform: 'scale(1.05)' }}>
+                  <div className="pricing-card featured p-4 h-100 d-flex flex-column" style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '12px', position: 'relative', transform: 'scale(1.05)' }}>
                     <div className="featured-badge" style={{ position: 'absolute', top: '-15px', right: '20px', background: 'var(--nb-yellow)', color: 'var(--nb-dark)', border: 'var(--nb-border-sm)', padding: '5px 15px', borderRadius: '4px', fontWeight: 'bold', fontSize: '0.85rem' }}>BEST VALUE</div>
                     <div className="pricing-header mb-4">
                       <h4 className="text-nb-dark fw-bold">Business Authority</h4>
@@ -96,7 +96,7 @@ const Business = () => {
 
                 {/* Enterprise Elite */}
                 <div className="col-lg-4 col-md-6">
-                  <div className="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column" style={{ background: '#fff', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '12px' }}>
+                  <div className="pricing-card p-4 mt-lg-3 h-100 d-flex flex-column" style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '12px' }}>
                     <div className="pricing-header mb-4">
                       <h4 className="text-nb-dark fw-bold">Custom Project</h4>
                       <p className="text-nb-muted small fw-500">Lets Discuss Your Unique Needs</p>
@@ -116,7 +116,7 @@ const Business = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="col-12 text-center text-nb-dark py-5" style={{ background: '#fff', border: 'var(--nb-border)', borderRadius: '12px', boxShadow: 'var(--nb-shadow)' }}>
+                <div className="col-12 text-center text-nb-dark py-5" style={{ background: 'var(--nb-surface)', border: 'var(--nb-border)', borderRadius: '12px', boxShadow: 'var(--nb-shadow)' }}>
                   <i className="fas fa-tools fa-3x mb-3 text-accent"></i>
                   <h4 className="fw-bold">Paket Sedang Dirancang</h4>
                   <p className="text-nb-muted fw-500">Silakan hubungi kami untuk penawaran kustom saat ini.</p>

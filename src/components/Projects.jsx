@@ -22,7 +22,7 @@ const cardStyle = {
   position: "relative",
   zIndex: 1,
   transformOrigin: "10% 60%",
-  background: "#ffffff",
+  background: "var(--nb-surface)",
   border: "var(--nb-border)",
   boxShadow: "var(--nb-shadow-lg)",
   padding: "20px",
