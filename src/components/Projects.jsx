@@ -51,7 +51,7 @@ const ProjectCardDesktop = ({ title, category, image, desc, link, linkText, inde
           <div className="ps-image-wrapper" style={{ flexShrink: 0, border: 'var(--nb-border)', borderRadius: '8px' }}>
             <img src={image} alt={title} className="ps-img" />
             <div className="ps-overlay" style={{ opacity: 1, top: '10px', left: '10px' }}>
-              <span className="ps-category" style={{ background: 'var(--nb-yellow)', color: 'var(--nb-dark)', border: 'var(--nb-border-sm)', borderRadius: '4px', textShadow: 'none', backdropFilter: 'none' }}>{category}</span>
+              <span className="ps-category" style={{ background: 'var(--nb-yellow)', color: '#1a1a2e', border: 'var(--nb-border-sm)', borderRadius: '4px', textShadow: 'none', backdropFilter: 'none' }}>{category}</span>
             </div>
           </div>
           <div className="ps-content mt-4 flex-grow-1 d-flex flex-column">
@@ -102,7 +102,7 @@ const ProjectCardMobile = ({ title, category, image, desc, link, linkText, index
           <div className="ps-image-wrapper" style={{ border: 'var(--nb-border)', borderRadius: '8px' }}>
             <img src={image} alt={title} className="ps-img" />
             <div className="ps-overlay" style={{ opacity: 1, top: '10px', left: '10px' }}>
-              <span className="ps-category" style={{ background: 'var(--nb-yellow)', color: 'var(--nb-dark)', border: 'var(--nb-border-sm)', borderRadius: '4px', textShadow: 'none', backdropFilter: 'none' }}>{category}</span>
+              <span className="ps-category" style={{ background: 'var(--nb-yellow)', color: '#1a1a2e', border: 'var(--nb-border-sm)', borderRadius: '4px', textShadow: 'none', backdropFilter: 'none' }}>{category}</span>
             </div>
           </div>
           <div className="ps-content mt-4">

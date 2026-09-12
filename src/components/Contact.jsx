@@ -69,13 +69,13 @@ const Contact = () => {
               <div className="mt-4">
                 <div className="d-flex align-items-center mb-3">
                   <motion.div whileHover={{ scale: 1.2, rotate: 15, y: -5, boxShadow: '4px 4px 0px var(--nb-dark)' }} className="icon-circle me-3" style={{ background: 'var(--nb-yellow)', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: 'var(--nb-border-sm)', cursor: 'pointer' }}>
-                    <i className="fas fa-envelope text-nb-dark"></i>
+                    <i className="fas fa-envelope text-dark"></i>
                   </motion.div>
                   <span className="text-nb-dark fw-bold">agusprana31@gmail.com</span>
                 </div>
                 <div className="d-flex align-items-center mb-3">
                   <motion.div whileHover={{ scale: 1.2, rotate: -15, y: -5, boxShadow: '4px 4px 0px var(--nb-dark)' }} className="icon-circle me-3" style={{ background: 'var(--nb-cyan)', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: 'var(--nb-border-sm)', cursor: 'pointer' }}>
-                    <i className="fab fa-github text-nb-dark"></i>
+                    <i className="fab fa-github text-dark"></i>
                   </motion.div>
                   <span className="text-nb-dark fw-bold">odivpds</span>
                 </div>
@@ -85,12 +85,12 @@ const Contact = () => {
             <div className="col-lg-7">
               <AnimatePresence>
                 {status && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: -30, scale: 0.8, rotate: -3 }}
                     animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
                     exit={{ opacity: 0, x: 200, scale: 0.5, rotate: 15 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className={`alert alert-${status.type} border-0 fw-bold`} 
+                    className={`alert alert-${status.type} border-0 fw-bold`}
                     style={{ border: 'var(--nb-border-sm)', boxShadow: '6px 6px 0px var(--nb-dark)' }}
                   >
                     {status.message}

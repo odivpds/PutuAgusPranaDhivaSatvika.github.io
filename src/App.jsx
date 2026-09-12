@@ -107,7 +107,7 @@ const AppContent = () => {
             style={{
               position: 'fixed',
               inset: 0,
-              backgroundColor: 'var(--nb-yellow)',
+              backgroundColor: 'var(--nb-bg)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -141,9 +141,9 @@ const AppContent = () => {
               transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.2 }}
               className="p-4 p-md-5"
               style={{
-                background: '#ffffff',
-                border: '3px solid #1a1a2e',
-                boxShadow: '8px 8px 0px rgba(26,26,46,0.25)',
+                background: 'var(--nb-surface)',
+                border: 'var(--nb-border)',
+                boxShadow: 'var(--nb-shadow-lg)',
                 textAlign: 'center',
                 marginBottom: 'clamp(1.5rem, 5vw, 3rem)',
                 maxWidth: '90vw',
@@ -151,19 +151,19 @@ const AppContent = () => {
                 zIndex: 2
               }}
             >
-              <h1 className="fw-bold mb-0" style={{ color: '#1a1a2e', fontSize: 'clamp(2rem, 8vw, 3.5rem)', textTransform: 'uppercase', letterSpacing: '2px' }}>Agus Prana</h1>
-              <p className="fw-bold mt-2 mb-0" style={{ color: '#1a1a2e', fontSize: 'clamp(0.9rem, 3vw, 1.2rem)' }}>PORTFOLIO EXPERIENCE</p>
+              <h1 className="fw-bold text-nb-dark mb-0" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', textTransform: 'uppercase', letterSpacing: '2px' }}>Agus Prana</h1>
+              <p className="fw-bold text-nb-dark mt-2 mb-0" style={{ fontSize: 'clamp(0.9rem, 3vw, 1.2rem)' }}>PORTFOLIO EXPERIENCE</p>
             </motion.div>
             
             <motion.button 
               id="start-btn"
               className="btn btn-accent px-4 px-md-5 py-3 fw-bold"
-              style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', border: '3px solid #1a1a2e', boxShadow: '8px 8px 0px rgba(26,26,46,0.25)', borderRadius: '8px', zIndex: 2, position: 'relative' }}
+              style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '8px', zIndex: 2, position: 'relative' }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
               onClick={handleStart}
-              whileHover={{ scale: 1.05, rotate: 2, backgroundColor: '#ffffff', color: '#1a1a2e' }}
+              whileHover={{ scale: 1.05, rotate: 2, backgroundColor: 'var(--nb-surface)', color: 'var(--nb-dark)' }}
               whileTap={{ scale: 0.95 }}
             >
               ENTER NOW <i className="fas fa-arrow-right ms-2"></i>
@@ -194,7 +194,7 @@ const AppContent = () => {
               style={{
                 width: '50vw',
                 height: '100vh',
-                backgroundColor: '#ffffff'
+                backgroundColor: 'var(--nb-surface)'
               }}
             />
             {/* Right Door */}
@@ -209,7 +209,7 @@ const AppContent = () => {
               style={{
                 width: '50vw',
                 height: '100vh',
-                backgroundColor: '#ffffff'
+                backgroundColor: 'var(--nb-surface)'
               }}
             />
             {/* WELCOME Text */}

@@ -141,12 +141,12 @@ const About = () => {
               </motion.p>
 
               <motion.h4 variants={itemVariants} className="text-nb-dark mb-4 mt-5">Pendidikan</motion.h4>
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.05, rotate: -2, x: 10, backgroundColor: '#f0f0f0' }} className="education-item mb-4 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.05, rotate: -2, x: 10, backgroundColor: 'var(--nb-surface)' }} className="education-item mb-4 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                 <h6 className="text-nb-dark mb-0 fw-bold">MIPA</h6>
                 <span className="text-accent small fw-bold">2019 — 2022</span>
                 <p className="text-nb-muted small mt-1">SMA Negeri 1 Tampaksiring</p>
               </motion.div>
-              <motion.div variants={itemVariants} whileHover={{ scale: 1.05, rotate: 2, x: 10, backgroundColor: '#f0f0f0' }} className="education-item mb-4 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
+              <motion.div variants={itemVariants} whileHover={{ scale: 1.05, rotate: 2, x: 10, backgroundColor: 'var(--nb-surface)' }} className="education-item mb-4 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                 <h6 className="text-nb-dark mb-0 fw-bold">S1 Informatika</h6>
                 <span className="text-accent small fw-bold">2022 — 2026</span>
                 <p className="text-nb-muted small mt-1">Institut Bisnis dan Teknologi Indonesia</p>
@@ -163,13 +163,13 @@ const About = () => {
 
               <motion.h4 variants={itemVariants} className="text-nb-dark mb-4 mt-5 d-flex align-items-center">
                 Sertifikasi
-                <span className="badge text-nb-dark ms-3" style={{ backgroundColor: '#FFD700', border: '1.5px solid var(--nb-dark)', boxShadow: '4px 4px 0px #FF8C00', fontSize: '0.65rem', padding: '0.3rem 0.5rem', fontWeight: 'bold', letterSpacing: '0.5px' }}>
+                <span className="badge text-dark ms-3" style={{ backgroundColor: '#FFD700', border: '1.5px solid dark', boxShadow: '4px 4px 0px #FF8C00', fontSize: '0.65rem', padding: '0.3rem 0.5rem', fontWeight: 'bold', letterSpacing: '0.5px' }}>
                   <i className="fa-solid fa-hand-pointer me-1"></i>KLIK UNTUK VERIFIKASI
                 </span>
               </motion.h4>
 
               <a href={certJinom} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: 'var(--nb-surface)' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">Web Developer Internship</h6>
@@ -182,7 +182,7 @@ const About = () => {
               </a>
 
               <a href={certDb} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: 'var(--nb-surface)' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">IT Specialist - Databases</h6>
@@ -195,7 +195,7 @@ const About = () => {
               </a>
 
               <a href={certIc3} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: 1, x: 5, backgroundColor: 'var(--nb-surface)' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">IC3 GS6 LEVEL 1</h6>
@@ -208,7 +208,7 @@ const About = () => {
               </a>
 
               <a href={certToeic} target="_blank" rel="noreferrer" className="text-decoration-none">
-                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: '#f0f0f0' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
+                <motion.div variants={itemVariants} whileHover={{ scale: 1.02, rotate: -1, x: 5, backgroundColor: 'var(--nb-surface)' }} className="education-item mb-3 ps-3 py-2 rounded" style={{ borderLeft: '4px solid var(--nb-accent)', cursor: 'pointer' }}>
                   <div className="d-flex justify-content-between align-items-center pe-3">
                     <div>
                       <h6 className="text-nb-dark mb-0 fw-bold">TOEIC Listening and Reading (Score: 550)</h6>
@@ -226,7 +226,7 @@ const About = () => {
                   href={resumeFile}
                   download="Resume - Putu Agus Prana Dhiva Satvika.pdf"
                   className="btn-nb-primary d-inline-flex align-items-center gap-2 fw-bold"
-                  style={{ padding: '0.8rem 1.5rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: 'var(--nb-dark)', borderRadius: '8px', display: 'inline-block' }}
+                  style={{ padding: '0.8rem 1.5rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: '#1a1a2e', borderRadius: '8px', display: 'inline-block' }}
                   whileHover={{ scale: 1.05, rotate: -3, y: -5, boxShadow: '8px 8px 0px var(--nb-dark)' }}
                   whileTap={{ scale: 0.95, rotate: 0, y: 0, boxShadow: '2px 2px 0px var(--nb-dark)' }}
                   onClick={() => {
@@ -266,7 +266,7 @@ const About = () => {
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">Game Developer Intern</h5>
-                  <span className="badge bg-nb-yellow text-nb-dark fw-bold" style={{ backgroundColor: 'var(--nb-yellow)' }}>2024</span>
+                  <span className="badge bg-nb-yellow text-dark fw-bold" style={{ backgroundColor: 'var(--nb-yellow)' }}>2024</span>
                 </div>
                 <p className="text-accent fw-bold mb-3">Hat and Cat Studio</p>
                 <ul className="text-nb-dark small fw-500 mb-0">
@@ -286,7 +286,7 @@ const About = () => {
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">Full Stack Web Developer</h5>
-                  <span className="badge bg-nb-pink text-nb-dark fw-bold" style={{ backgroundColor: 'var(--nb-pink)' }}>2025</span>
+                  <span className="badge bg-nb-pink text-dark fw-bold" style={{ backgroundColor: 'var(--nb-pink)' }}>2025</span>
                 </div>
                 <p className="text-accent fw-bold mb-3">Skripsi - INSTIKI</p>
                 <ul className="text-nb-dark small fw-500 mb-0">
@@ -304,7 +304,7 @@ const About = () => {
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">AI Chatbots Integration Intern</h5>
-                  <span className="badge bg-nb-cyan text-nb-dark fw-bold" style={{ backgroundColor: 'var(--nb-cyan)' }}>2026</span>
+                  <span className="badge bg-nb-cyan text-dark fw-bold" style={{ backgroundColor: 'var(--nb-cyan)' }}>2026</span>
                 </div>
                 <p className="text-accent fw-bold mb-3">PT JinomNetwork (Jinom AI)</p>
                 <ul className="text-nb-dark small fw-500 mb-0">
@@ -328,7 +328,7 @@ const About = () => {
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">HRIS Developer Intern</h5>
-                  <span className="badge bg-nb-pink text-nb-dark fw-bold" style={{ backgroundColor: 'var(--nb-pink)' }}>2026</span>
+                  <span className="badge bg-nb-pink text-dark fw-bold" style={{ backgroundColor: 'var(--nb-pink)' }}>2026</span>
                 </div>
                 <p className="text-accent fw-bold mb-3">PT JinomNetwork (HR Jinom)</p>
                 <ul className="text-nb-dark small fw-500 mb-0">
@@ -350,7 +350,7 @@ const About = () => {
               >
                 <div className="d-flex justify-content-between align-items-center mb-2">
                   <h5 className="text-nb-dark fw-bold mb-0">Full-Stack Web Developer Intern</h5>
-                  <span className="badge bg-nb-yellow text-nb-dark fw-bold" style={{ backgroundColor: 'var(--nb-yellow)' }}>2026</span>
+                  <span className="badge bg-nb-yellow text-dark fw-bold" style={{ backgroundColor: 'var(--nb-yellow)' }}>2026</span>
                 </div>
                 <p className="text-accent fw-bold mb-3">PT JinomNetwork (Jinom.net CMS)</p>
                 <ul className="text-nb-dark small fw-500 mb-0">
@@ -368,7 +368,7 @@ const About = () => {
                   href={resumeFile}
                   download="Resume-PutuAgusPranaDhivaSatvika.pdf.pdf"
                   className="btn-nb-primary d-inline-flex align-items-center gap-2 fw-bold w-100 justify-content-center"
-                  style={{ padding: '1rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: 'var(--nb-dark)', borderRadius: '8px' }}
+                  style={{ padding: '1rem', textDecoration: 'none', border: 'var(--nb-border)', boxShadow: 'var(--nb-shadow)', backgroundColor: 'var(--nb-accent)', color: '#1a1a2e', borderRadius: '8px' }}
                   whileHover={{ scale: 1.02, y: -2, boxShadow: '6px 6px 0px var(--nb-dark)' }}
                   whileTap={{ scale: 0.98, y: 2, boxShadow: '2px 2px 0px var(--nb-dark)' }}
                   onClick={() => {
