@@ -104,11 +104,21 @@ const Navbar = () => {
               <li className="nav-item">
                 <a className="nav-link" href="https://drive.google.com/drive/folders/1Gyw3-Gotec8eDSgS2hvTS1I_m2DBsFZ5?usp=sharing" target="_blank" rel="noreferrer" onClick={() => { playClickSFX(); closeNavbar(); }}>Portofolio</a>
               </li>
+              <li className="nav-item d-lg-none mt-2">
+                <button 
+                  className="nav-link btn btn-link text-start w-100 fw-bold" 
+                  onClick={(e) => { e.preventDefault(); handleThemeToggle(); closeNavbar(); }} 
+                  style={{ textDecoration: 'none', border: 'none', background: 'none' }}
+                >
+                  <i className={`fas ${isDark ? 'fa-sun' : 'fa-moon'} me-2`}></i>
+                  {isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Kebab Menu (Three Dots) */}
-          <div className="kebab-menu" ref={kebabRef}>
+          {/* Kebab Menu (Three Dots) - Desktop Only */}
+          <div className="kebab-menu d-none d-lg-block" ref={kebabRef}>
             <button 
               className="kebab-btn"
               onClick={() => { playClickSFX(); setKebabOpen(!kebabOpen); }}

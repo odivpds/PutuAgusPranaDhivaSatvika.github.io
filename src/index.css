@@ -858,7 +858,8 @@ body.locked {
 
 @media (max-width: 768px) {
   .music-float {
-    bottom: 80px;
+    bottom: 15px;
+    left: 15px;
     padding: 8px 12px;
   }
 
