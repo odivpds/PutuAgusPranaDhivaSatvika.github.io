@@ -97,13 +97,13 @@ const AppContent = () => {
   return (
     <>
       <ScrollToTop />
-      
+
       <AnimatePresence>
         {splashStep === 0 && (
-          <motion.div 
+          <motion.div
             key="splash"
             exit={{ y: '-100vh' }}
-            transition={{ duration: 0.8, ease: "anticipate" }} 
+            transition={{ duration: 0.8, ease: "anticipate" }}
             style={{
               position: 'fixed',
               inset: 0,
@@ -117,7 +117,7 @@ const AppContent = () => {
             }}
           >
             {/* Decorative Lottie Animations */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0, rotate: -45 }}
               animate={{ opacity: 1, scale: 1, rotate: 10 }}
               transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
@@ -126,7 +126,7 @@ const AppContent = () => {
               <Lottie animationData={starAnimation} loop={true} />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0, rotate: 45 }}
               animate={{ opacity: 1, scale: 1, rotate: -10 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
@@ -141,9 +141,9 @@ const AppContent = () => {
               transition={{ type: "spring", stiffness: 150, damping: 15, delay: 0.2 }}
               className="p-4 p-md-5"
               style={{
-                background: 'var(--nb-surface)',
-                border: 'var(--nb-border)',
-                boxShadow: 'var(--nb-shadow-lg)',
+                background: 'var(--nb-yellow)',
+                border: '5px solid black',
+                boxShadow: '8px 8px 0px var(--nb-accent)',
                 textAlign: 'center',
                 marginBottom: 'clamp(1.5rem, 5vw, 3rem)',
                 maxWidth: '90vw',
@@ -151,14 +151,14 @@ const AppContent = () => {
                 zIndex: 2
               }}
             >
-              <h1 className="fw-bold text-nb-dark mb-0" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', textTransform: 'uppercase', letterSpacing: '2px' }}>Agus Prana</h1>
-              <p className="fw-bold text-nb-dark mt-2 mb-0" style={{ fontSize: 'clamp(0.9rem, 3vw, 1.2rem)' }}>PORTFOLIO EXPERIENCE</p>
+              <h1 className="fw-bold mb-0" style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', textTransform: 'uppercase', letterSpacing: '2px', color: '#1a1a2e' }}>Agus Prana</h1>
+              <p className="fw-bold mt-2 mb-0" style={{ fontSize: 'clamp(0.9rem, 3vw, 1.2rem)', color: '#1a1a2e' }}>PORTFOLIO EXPERIENCE</p>
             </motion.div>
-            
-            <motion.button 
+
+            <motion.button
               id="start-btn"
               className="btn btn-accent px-4 px-md-5 py-3 fw-bold"
-              style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '8px', zIndex: 2, position: 'relative' }}
+              style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', border: '3px solid black', boxShadow: 'var(--nb-shadow-lg)', borderRadius: '8px', zIndex: 2, position: 'relative' }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
@@ -172,7 +172,7 @@ const AppContent = () => {
         )}
 
         {(splashStep === 1 || splashStep === 2) && (
-          <motion.div 
+          <motion.div
             key="welcome-sequence"
             style={{
               position: 'fixed',
@@ -185,10 +185,10 @@ const AppContent = () => {
             {/* Left Door */}
             <motion.div
               initial={{ x: 0 }}
-              animate={{ 
-                x: splashStep === 2 ? '-50vw' : 0 
+              animate={{
+                x: splashStep === 2 ? '-50vw' : 0
               }}
-              transition={{ 
+              transition={{
                 x: { duration: 1, ease: "easeInOut" }
               }}
               style={{
@@ -200,10 +200,10 @@ const AppContent = () => {
             {/* Right Door */}
             <motion.div
               initial={{ x: 0 }}
-              animate={{ 
-                x: splashStep === 2 ? '50vw' : 0 
+              animate={{
+                x: splashStep === 2 ? '50vw' : 0
               }}
-              transition={{ 
+              transition={{
                 x: { duration: 1, ease: "easeInOut" }
               }}
               style={{
@@ -215,13 +215,13 @@ const AppContent = () => {
             {/* WELCOME Text */}
             <motion.h1
               initial={{ opacity: 0, scale: 3, rotate: -15, x: '-50%', y: '-50%' }}
-              animate={{ 
-                opacity: splashStep === 1 ? 1 : 0, 
+              animate={{
+                opacity: splashStep === 1 ? 1 : 0,
                 scale: splashStep === 1 ? 1 : 1.5,
                 rotate: splashStep === 1 ? -3 : 5,
-                x: '-50%', y: '-50%' 
+                x: '-50%', y: '-50%'
               }}
-              transition={{ 
+              transition={{
                 opacity: { delay: splashStep === 1 ? 0.4 : 0, duration: splashStep === 1 ? 0.2 : 0.3 },
                 scale: { delay: splashStep === 1 ? 0.4 : 0, type: 'spring', stiffness: 300, damping: 12 },
                 rotate: { delay: splashStep === 1 ? 0.4 : 0, type: 'spring', stiffness: 250, damping: 10 }
@@ -247,9 +247,9 @@ const AppContent = () => {
       {experienceStarted && (
         <div>
           <Navbar />
-          <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." 
-            className="whatsapp-float"  
-            target="_blank" 
+          <a href="https://wa.me/6282247250393?text=Halo%20Agus,%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi."
+            className="whatsapp-float"
+            target="_blank"
             rel="noopener noreferrer"
             aria-label="Hubungi saya di WhatsApp"
             onClick={() => playClickSFX()}>
