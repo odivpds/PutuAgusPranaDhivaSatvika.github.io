@@ -6,7 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [kebabOpen, setKebabOpen] = useState(false);
-  const { isMusicPlaying, toggleMusic, playClickSFX } = useAudio();
+  const { playClickSFX } = useAudio();
   const { isDark, toggleTheme } = useTheme();
   const location = useLocation();
   const kebabRef = useRef(null);
@@ -66,16 +66,6 @@ const Navbar = () => {
 
   return (
     <>
-      <button 
-        id="musicToggle" 
-        className={`music-float ${isMusicPlaying ? 'music-playing' : ''}`} 
-        aria-label="Toggle Music"
-        onClick={() => { playClickSFX(); toggleMusic(); }}
-      >
-        <i className={`fas ${isMusicPlaying ? 'fa-volume-up' : 'fa-volume-mute'}`}></i>
-        <span className="music-status">{isMusicPlaying ? 'ON' : 'OFF'}</span>
-      </button>
-
       <nav className={`navbar navbar-expand-lg fixed-top ${scrolled ? 'nav-scrolled' : ''}`}>
         <div className="container">
           <Link className="navbar-brand fw-bold" to="/" onClick={() => { playClickSFX(); closeNavbar(); }}>

@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Business from './pages/Business';
 import { useAudio } from './context/AudioContext';
+import { useTheme } from './context/ThemeContext';
 import LottieModule from 'lottie-react';
 const Lottie = LottieModule.default || LottieModule;
 
@@ -38,6 +39,7 @@ const ScrollToTop = () => {
 
 const AppContent = () => {
   const { startExperience, playClickSFX } = useAudio();
+  const { isDark } = useTheme();
   // splashStep: 0 = Splash, 1 = Slide Up, 2 = Open Doors, 3 = Done
   const [splashStep, setSplashStep] = useState(
     sessionStorage.getItem('experience-started') === 'true' ? 3 : 0
@@ -194,7 +196,7 @@ const AppContent = () => {
               style={{
                 width: '50vw',
                 height: '100vh',
-                backgroundColor: 'var(--nb-surface)'
+                backgroundColor: 'var(--nb-surface)',
               }}
             />
             {/* Right Door */}
@@ -209,7 +211,7 @@ const AppContent = () => {
               style={{
                 width: '50vw',
                 height: '100vh',
-                backgroundColor: 'var(--nb-surface)'
+                backgroundColor: 'var(--nb-surface)',
               }}
             />
             {/* WELCOME Text */}
@@ -230,12 +232,14 @@ const AppContent = () => {
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
-                color: '#ffffff',
+                color: 'var(--nb-yellow, #FFD600)',
+                WebkitTextStroke: isDark ? '10px #e8e6e3' : '10px #000',
+                paintOrder: 'stroke fill',
                 fontSize: 'clamp(3rem, 10vw, 5rem)',
                 fontWeight: 900,
                 letterSpacing: 'clamp(2px, 2vw, 8px)',
                 zIndex: 10000,
-                textShadow: '4px 4px 0px var(--nb-accent)'
+                textShadow: '6px 6px 0px var(--nb-accent)'
               }}
             >
               WELCOME

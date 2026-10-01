@@ -11,7 +11,7 @@ export const useTheme = () => {
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('portfolio-theme');
-    return saved || 'dark'; // Dark mode as default
+    return saved || 'light'; // Light mode as default
   });
 
   useEffect(() => {
