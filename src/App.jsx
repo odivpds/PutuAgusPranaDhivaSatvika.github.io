@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Business from './pages/Business';
+import ProjectsGallery from './pages/ProjectsGallery';
 import { useAudio } from './context/AudioContext';
 import { useTheme } from './context/ThemeContext';
 import LottieModule from 'lottie-react';
@@ -268,6 +269,8 @@ const AppContent = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/business" element={<Business />} />
+            <Route path="/gallery" element={<ProjectsGallery />} />
+            <Route path="/projects" element={<ProjectsGallery />} />
           </Routes>
           <Footer />
         </div>

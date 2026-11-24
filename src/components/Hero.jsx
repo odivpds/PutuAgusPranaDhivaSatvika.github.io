@@ -34,9 +34,10 @@ const Hero = () => {
               animate={{ y: 0, opacity: 1, rotate: 0 }}
               transition={{ type: "spring", stiffness: 250, damping: 18, delay: 0.1 }}
             >
-              <h5 className="text-accent fw-bold mb-3 mt-5 mt-lg-0" style={{ letterSpacing: '1px' }}>FULL STACK WEB DEVELOPER</h5>
+              <h5 className="text-accent fw-bold mb-3 mt-5 mt-lg-0" style={{ letterSpacing: '1px' }}>Agus Prana | FULL STACK WEB DEVELOPER</h5>
               <h1 className="display-5 display-lg-3 text-nb-dark mb-4" style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-2px' }}>Membangun Solusi Digital dengan Presisi.</h1>
-              <p className="lead text-nb-muted mb-5 px-2 px-lg-0" style={{ fontWeight: 500 }}>Halo, saya Agus Prana. Berfokus pada pengembangan web menggunakan Laravel, ReactJS, dan NodeJS. Berkomitmen untuk menciptakan kode yang bersih dan fungsional.</p>
+              <p className="lead text-nb-muted mb-5 px-2 px-lg-0" style={{ fontWeight: 500 }}>Membangun aplikasi web yang fungsional dengan kode yang bersih menggunakan Laravel, ReactJS, dan NodeJS.
+              </p>
               <div className="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
                 <a href="#projects" className="btn btn-accent px-4 py-3 fw-bold w-sm-100">Lihat Project</a>
                 <a href="#contact" className="btn btn-outline-accent px-4 py-3 fw-bold w-sm-100" style={{ background: 'var(--nb-surface)' }}>Hubungi Saya</a>

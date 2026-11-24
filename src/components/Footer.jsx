@@ -30,6 +30,7 @@ const Footer = () => {
               <li><Link to="/" onClick={() => playClickSFX()} className="text-nb-muted fw-bold">Home</Link></li>
               <li><Link to="/#about" onClick={() => playClickSFX()} className="text-nb-muted fw-bold">About</Link></li>
               <li><Link to="/#projects" onClick={() => playClickSFX()} className="text-nb-muted fw-bold">Projects</Link></li>
+              <li><Link to="/gallery" onClick={() => playClickSFX()} className="text-nb-muted fw-bold">Project Gallery</Link></li>
               <li><Link to="/#contact" onClick={() => playClickSFX()} className="text-nb-muted fw-bold">Contact</Link></li>
             </ul>
           </div>

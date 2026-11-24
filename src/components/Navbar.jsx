@@ -89,6 +89,9 @@ const Navbar = () => {
                 {isHome ? <a className="nav-link" href="#projects" onClick={(e) => handleScrollTo(e, 'projects')}>Projects</a> : <Link className="nav-link" to="/#projects" onClick={() => { playClickSFX(); closeNavbar(); }}>Projects</Link>}
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/gallery" onClick={() => { playClickSFX(); closeNavbar(); }}>Gallery</Link>
+              </li>
+              <li className="nav-item">
                 {isHome ? <a className="nav-link" href="#contact" onClick={(e) => handleScrollTo(e, 'contact')}>Contact</a> : <Link className="nav-link" to="/#contact" onClick={() => { playClickSFX(); closeNavbar(); }}>Contact</Link>}
               </li>
               <li className="nav-item">
