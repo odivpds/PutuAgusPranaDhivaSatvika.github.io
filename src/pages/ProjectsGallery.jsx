@@ -9,6 +9,7 @@ import imgLatsu from '../assets/latsu.png';
 import imgDivgym from '../assets/divgym.png';
 import imgLesstresso from '../assets/lesstresso.png';
 import imgSkyvoya from '../assets/skyvoya.png';
+import imgBarber from '../assets/barber.jpg';
 
 const allProjects = [
   {
@@ -63,6 +64,17 @@ const allProjects = [
     desc: 'Website modern untuk agen perjalanan wisata dengan paket tour terlengkap, formulir reservasi online, dan informasi destinasi terupdate.',
     tags: ['Landing Page', 'Travel & Tour', 'Reservasi Online', 'Responsive'],
     link: 'https://odivpds.github.io/SkyVoyaTravel/',
+    linkText: 'Live Preview',
+    featured: true,
+  },
+  {
+    id: 'barber-premium',
+    title: 'Barbershop Premium',
+    category: 'Landing Page',
+    image: imgBarber,
+    desc: 'Website modern dan elegan untuk barbershop premium dengan sistem reservasi jadwal online, daftar harga layanan grooming, showcase kapster profesional, dan desain dark aesthetic yang memikat.',
+    tags: ['Landing Page', 'Barbershop', 'Reservasi Online', 'Dark Aesthetic', 'Responsive'],
+    link: 'https://barber.odivpds.my.id',
     linkText: 'Live Preview',
     featured: true,
   },
