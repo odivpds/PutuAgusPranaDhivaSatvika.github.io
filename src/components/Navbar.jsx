@@ -89,18 +89,15 @@ const Navbar = () => {
                 {isHome ? <a className="nav-link" href="#projects" onClick={(e) => handleScrollTo(e, 'projects')}>Projects</a> : <Link className="nav-link" to="/#projects" onClick={() => { playClickSFX(); closeNavbar(); }}>Projects</Link>}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/gallery" onClick={() => { playClickSFX(); closeNavbar(); }}>Gallery</Link>
-              </li>
-              <li className="nav-item">
                 {isHome ? <a className="nav-link" href="#contact" onClick={(e) => handleScrollTo(e, 'contact')}>Contact</a> : <Link className="nav-link" to="/#contact" onClick={() => { playClickSFX(); closeNavbar(); }}>Contact</Link>}
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="https://drive.google.com/drive/folders/1Gyw3-Gotec8eDSgS2hvTS1I_m2DBsFZ5?usp=sharing" target="_blank" rel="noreferrer" onClick={() => { playClickSFX(); closeNavbar(); }}>Portofolio</a>
               </li>
               <li className="nav-item d-lg-none mt-2">
-                <button 
-                  className="nav-link btn btn-link text-start w-100 fw-bold" 
-                  onClick={(e) => { e.preventDefault(); handleThemeToggle(); closeNavbar(); }} 
+                <button
+                  className="nav-link btn btn-link text-start w-100 fw-bold"
+                  onClick={(e) => { e.preventDefault(); handleThemeToggle(); closeNavbar(); }}
                   style={{ textDecoration: 'none', border: 'none', background: 'none' }}
                 >
                   <i className={`fas ${isDark ? 'fa-sun' : 'fa-moon'} me-2`}></i>
@@ -112,7 +109,7 @@ const Navbar = () => {
 
           {/* Kebab Menu (Three Dots) - Desktop Only */}
           <div className="kebab-menu d-none d-lg-block" ref={kebabRef}>
-            <button 
+            <button
               className="kebab-btn"
               onClick={() => { playClickSFX(); setKebabOpen(!kebabOpen); }}
               aria-label="Menu options"
