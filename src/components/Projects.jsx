@@ -119,6 +119,25 @@ const AbstractProjectCard = React.memo(({
     focusCenter
   } = project;
   const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef(null);
+
+  // Scroll-scrubbed slow-motion alternating entrance for mobile cards
+  const { scrollYProgress: cardScrollProgress } = useScroll({
+    target: cardRef,
+    offset: ['start 98%', 'start 66%']
+  });
+
+  const mobileEntranceSpring = useSpring(cardScrollProgress, {
+    stiffness: 44,
+    damping: 21,
+    mass: 1.8
+  });
+
+  const sideSign = index % 2 === 0 ? 1 : -1;
+  const mobileX = useTransform(mobileEntranceSpring, [0, 1], [sideSign * 84, 0]);
+  const mobileOpacity = useTransform(mobileEntranceSpring, [0, 0.3, 1], [0.08, 0.82, 1]);
+  const mobileRotate = useTransform(mobileEntranceSpring, [0, 1], [sideSign * 2.4, 0]);
+  const mobileScale = useTransform(mobileEntranceSpring, [0, 1], [0.92, 1]);
 
   // Derive parallax, tilt, and focus scale from single shared section scroll spring
   const activeParallaxRange =
@@ -130,7 +149,7 @@ const AbstractProjectCard = React.memo(({
       ? index % 2 === 1
         ? [32, -32]
         : [12, -12]
-      : [12, -10];
+      : [16, -16];
 
   const yParallax = useTransform(sectionProgress, [0, 1], activeParallaxRange);
 
@@ -140,17 +159,14 @@ const AbstractProjectCard = React.memo(({
     Math.min(1, focusCenter + 0.35)
   ];
 
-  const activeTiltRange = prefersReducedMotion
-    ? [0, 0, 0]
-    : mode === 'mobile'
-    ? [tiltRange[0] * 0.45, 0, tiltRange[2] * 0.45]
-    : tiltRange;
+  const activeTiltRange =
+    prefersReducedMotion || mode === 'mobile' ? [0, 0, 0] : tiltRange;
 
   const rotate = useTransform(sectionProgress, focusRange, activeTiltRange);
   const scale = useTransform(
     sectionProgress,
     focusRange,
-    prefersReducedMotion ? [1, 1, 1] : [0.95, 1, 0.97]
+    prefersReducedMotion || mode === 'mobile' ? [1, 1, 1] : [0.95, 1, 0.97]
   );
 
   const borderColor = isDark ? '#2c2c3a' : '#1a1a2e';
@@ -228,6 +244,8 @@ const AbstractProjectCard = React.memo(({
     </>
   );
 
+  const isMobileAnimated = mode === 'mobile' && !prefersReducedMotion;
+
   const cardMotionProps = {
     className: "d-block position-relative overflow-hidden text-decoration-none",
     whileHover: {
@@ -251,8 +269,31 @@ const AbstractProjectCard = React.memo(({
     }
   };
 
+  const cardElement = link ? (
+    <motion.a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={title}
+      onClick={() => playClickSFX()}
+      {...cardMotionProps}
+    >
+      {innerContent}
+    </motion.a>
+  ) : (
+    <motion.div
+      tabIndex={0}
+      aria-label={title}
+      onClick={() => playClickSFX()}
+      {...cardMotionProps}
+    >
+      {innerContent}
+    </motion.div>
+  );
+
   return (
     <motion.div
+      ref={cardRef}
       style={{
         ...wrapperStyle,
         y: yParallax,
@@ -261,26 +302,20 @@ const AbstractProjectCard = React.memo(({
         willChange: 'transform'
       }}
     >
-      {link ? (
-        <motion.a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={title}
-          onClick={() => playClickSFX()}
-          {...cardMotionProps}
-        >
-          {innerContent}
-        </motion.a>
-      ) : (
+      {isMobileAnimated ? (
         <motion.div
-          tabIndex={0}
-          aria-label={title}
-          onClick={() => playClickSFX()}
-          {...cardMotionProps}
+          style={{
+            x: mobileX,
+            opacity: mobileOpacity,
+            rotate: mobileRotate,
+            scale: mobileScale,
+            willChange: 'transform, opacity'
+          }}
         >
-          {innerContent}
+          {cardElement}
         </motion.div>
+      ) : (
+        cardElement
       )}
     </motion.div>
   );
@@ -301,9 +336,9 @@ const Projects = () => {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 32,
+    stiffness: 30,
     damping: 22,
-    mass: 2.2
+    mass: 2.3
   });
 
   const gridStyle =
